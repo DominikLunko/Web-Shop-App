@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffce25;
+  height: 80px;
+
+  & .navbar__logo {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:max-content;
+    margin:10px;
+    padding:5px;
+    cursor: pointer;
+
+    & .tinel-text {
+      letter-spacing: 1px;
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: bold;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      margin-right: 10px;
+      -webkit-text-stroke-width: 0.5px;
+      -webkit-text-stroke-color: #fff;
+      text-shadow: 2px 0 0 #1d1d1b, -2px 0 0 #1d1d1b, 0 2px 0 #1d1d1b,
+        0 -2px 0 #1d1d1b, 1px 1px #1d1d1b, -1px -1px 0 #1d1d1b,
+        1px -1px 0 #1d1d1b, -1px 1px 0 #1d1d1b;
+
+    }
+
+    & .workshop-text {
+      color: #1d1d1b;
+      margin-left:25px;
+      font-weight: 600;
+    }
+  }
+
+  & .cart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right:100px;
+      position: relative;
+      cursor: pointer;
+
+    & .blue-dot{
+        color:#00AAE4 !important;
+        font-size: 10px;
+        position: absolute;
+        top:0;
+        left:10%;
+    } 
+    & .cart-number{
+        font-weight: bold;
+        font-family: "Times New Roman", Times, serif;
+        padding:5px;
+    }
+  }
+}
