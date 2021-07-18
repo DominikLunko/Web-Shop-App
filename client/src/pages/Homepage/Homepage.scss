@@ -1,0 +1,27 @@
+.workshop-list-wrap {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: calc(100% + 100px);;
+
+    .filters{
+        flex:0.2;
+        margin-top:100px;
+        display: flex;
+        flex-direction: column;
+
+        p {
+            margin-left: 10px;   
+        }
+
+        .category-list{
+            list-style: none;
+            margin:5px;
+
+            li{
+                margin: 5px;
+                cursor:pointer;
+            }
+        }
+    }
+}

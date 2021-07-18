@@ -1,0 +1,17 @@
+.cards {
+    flex:0.75;
+    margin-top: 55px;
+}
+
+.cards-container{
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+}
+
+.load-more{
+    position: absolute;
+    right:15%;
+    cursor:pointer;
+    border-bottom: 2px solid #0097CC;
+
+}

@@ -1,0 +1,35 @@
+
+.sidebar {
+    background: white;
+    position: fixed;
+    z-index:999;
+    height: 100vh;
+    top:0;
+    right:0;
+    width: 0%;
+    transition: width 1s;
+    box-shadow: 5px 10px 5px 5px #888888;
+    transition: all 0.4s;
+    & .title-and-close {
+         display: none;
+      }
+   
+    
+    
+  
+}
+.sidebar.active {
+  transition: all ease-in-out 0.4s;
+  width: 380px;
+  @media screen and(max-width:425px) {
+    width: 100%;
+  }
+  & .title-and-close {
+    margin:10px;
+    padding:10px;
+  display: flex;
+  justify-content: space-between;
+}
+//  
+
+}
