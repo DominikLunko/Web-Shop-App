@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
@@ -9,11 +9,14 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import './workshopList.scss';
 
 import { RootStore } from "../../redux/store";
-import { getWorkshops } from "../../redux/actions/workShopActions";
+import { getWorkshops, increasePage } from "../../redux/actions/workShopActions";
 
-const WorkshopList: React.FC<any> = ({ onClick }) => {
+const WorkshopList: React.FC<any> = () => {
+  const dispatch =useDispatch()
   const workshopState = useSelector((state: RootStore) => state.workshop);
-  const { loading, error, workshops } = workshopState;
+  const { loading, error, workshops, hasMore } = workshopState;
+  const [allWorkShops, setAllWorkShops] = useState(workshops.length);
+  
 
   return (
     <div className="cards">
@@ -46,7 +49,7 @@ const WorkshopList: React.FC<any> = ({ onClick }) => {
           </Row>
         </Container>
       )}
-      <p className="load-more" onClick={onClick}>{workshops && "Load more"}</p>
+      <p className="load-more" onClick={()=>dispatch(increasePage())}>{hasMore && workshops.length >0 && "Load more"}</p>
     </div>
   );
 };

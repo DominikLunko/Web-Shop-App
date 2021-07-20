@@ -2,9 +2,13 @@ export const GET_WORKSHOP_REQUEST = "GET_WORKSHOP_REQUEST"
 export const GET_WORKSHOP_SUCCESS = "GET_WORKSHOP_SUCCESS"
 export const GET_WORKSHOP_FAIL = "GET_WORKSHOP_FAIL"
 
-export const GET_WORKSHOP_BY_CATEGORY = "GET_WORKSHOP_BY_CATEGORY"
 
 export const RESET_WORKSHOP_LIST = "RESET_WORKSHOP_LIST";
+export const PAGE_AND_CATEGORY = "PAGE_AND_CATEGORY"
+
+export const INCREASE_PAGE_NUMBER = "INCREASE_PAGE_NUMBER"
+
+export const CHANGE_CATEGORY = "CHANGE_CATEGORY"
 
 
 export type Workshop = {
@@ -20,6 +24,7 @@ export type Workshop = {
 
 export interface WorkshopLoading {
     type: typeof GET_WORKSHOP_REQUEST
+    
 }
 
 export interface WorkshopFail {
@@ -29,16 +34,37 @@ export interface WorkshopFail {
 
 export interface WorkshopSuccess {
     type: typeof GET_WORKSHOP_SUCCESS,
-    payload: Workshop[]
+    payload: {
+        workshops:Workshop[],
+        numberOfData:number
+    }
 }
 
-export interface WorkshopByCategory {
-    type: typeof GET_WORKSHOP_BY_CATEGORY,
-    payload:Workshop[]
-}
+
 export interface ResetWorkshopList {
     type: typeof RESET_WORKSHOP_LIST,
     
 }
+export interface GetPageAndCategory {
+    type: typeof PAGE_AND_CATEGORY,
+    payload:{
+        page:number,
+        category:string
+    }
+    
+}
 
-export type WorkshopDispatchTypes = WorkshopLoading | WorkshopFail | WorkshopSuccess | WorkshopByCategory | ResetWorkshopList
+export interface IncreasePageNumber {
+    type: typeof INCREASE_PAGE_NUMBER,
+    
+}
+
+export interface ChangeCategory {
+    type: typeof CHANGE_CATEGORY,
+    payload:{
+        category:string,
+        numberOfData:number
+    }
+}
+
+export type WorkshopDispatchTypes = WorkshopLoading | WorkshopFail | WorkshopSuccess | ResetWorkshopList | GetPageAndCategory | IncreasePageNumber | ChangeCategory

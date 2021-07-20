@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
 import "./Workshop.scss";
@@ -22,6 +22,8 @@ import {
 } from "reactstrap";
 import { getWorkshopDetail } from "../../../redux/actions/workShopDetailsAction";
 import { resetWorkshopList } from "../../../redux/actions/workShopActions";
+import { addToCart } from "../../../redux/actions/cartActions";
+import { RootStore } from "../../../redux/store";
 
 interface WorkshopType {
   imageUrl: string;
@@ -31,6 +33,7 @@ interface WorkshopType {
   date: String;
   category: string;
   userId: number;
+  
 }
 
 const Workshop: React.FC<WorkshopType> = ({
@@ -42,19 +45,22 @@ const Workshop: React.FC<WorkshopType> = ({
   category,
   userId,
 }) => {
-
+  // const cartState = useSelector((state: RootStore) => state.cart);
+  // const { cartItems} = cartState;
   const dispatch = useDispatch();
   const clearDate = date.split("T")[0];
   const onlyTime = date.split("T")[1];
   const clearTime = onlyTime.split(".")[0];
   const decimalPrice = price.toFixed(2);
+ 
+
+  
+
   return (
     <Card
+    
       className="card-project"
-      data-aos="zoom-in"
-      data-aos-offset="-200"
-      data-aos-easing="linear"
-      data-aos-duration="500"
+      id={JSON.stringify(id)?.concat("-card")}
     >
       <Link to={`/workshop/${id}`} className="info__button">
       <CardImg
@@ -67,7 +73,6 @@ const Workshop: React.FC<WorkshopType> = ({
           objectFit: "cover",
         }}
         onClick={() => {
-          dispatch(resetWorkshopList())
           dispatch(getWorkshopDetail(id, userId))}}
       />
       </Link>
@@ -99,7 +104,7 @@ const Workshop: React.FC<WorkshopType> = ({
           {decimalPrice}
           <p>EUR</p>
         </CardSubtitle>
-        <Button className="button">Add To Cart</Button>
+        <Button className="button" onClick={() => dispatch(addToCart(id,1,false))}>Add To Cart</Button>
       </CardBody>
     </Card>
   );

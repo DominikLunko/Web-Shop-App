@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
+
 import CartIcon from './cartIcon/CartIcon';
 
 
@@ -19,7 +20,7 @@ const Navbar: React.FC<any> = ({onClick}) => {
     <div className="nav">
     <div className="navbar">
       <div className="navbar__logo">
-          <Link className="logo-link" to="/">
+          <Link className="logo-link" to="/" >
             <p className="tinel-text">tinel</p>
             <p className="workshop-text">Workshop</p>
           </Link>

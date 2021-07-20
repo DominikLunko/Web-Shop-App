@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
+
+import {
+  useLocation
+} from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { RootStore } from "../../redux/store";
 import {
+  changeCategory,
   getWorkshops,
-  getWorkshopsByCategory,
+  increasePage,
   resetWorkshopList,
 } from "../../redux/actions/workShopActions";
 
@@ -17,39 +23,62 @@ import CodeIcon from "@material-ui/icons/Code";
 import FlashOnRoundedIcon from "@material-ui/icons/FlashOnRounded";
 
 import WorkshopList from "../../components/workshopList/workshopList";
+import Workshop from "../../components/workshopList/WorkShop/WorkShop";
+import { workshopDetailReset } from "../../redux/actions/workShopDetailsAction";
 
-const Homepage: React.FC<{ onClick?: React.MouseEventHandler<HTMLElement> }> =
+const Homepage: React.FC<any> =
   ({ onClick }) => {
     const dispatch = useDispatch();
-
-    const [page, setPage] = useState(1);
-    const [category, setCategory] = useState("all");
-
+    const currentWorkshop = useSelector((state:RootStore) => state.workshopDetails)
+    const {page,category} = useSelector((state:RootStore) =>state.workshop)
+    const location = useLocation();
+    const [categoryList, setCategoryList] = useState(["all","design","frontend","backend","marketing"]);
+    
+    
     // const {getAllWorkshops } = bindActionCreators(workshopActionCreators, dispatch)
-    useEffect(() => {
-      dispatch(getWorkshopsByCategory(category));
-    }, [category]);
     
     useEffect(() => {
-      dispatch(getWorkshops(page));
-    }, [page]);
+      console.log("page: ",page)
+      console.log("category: ",category)
+      if(currentWorkshop.workshop){
+        dispatch(workshopDetailReset());
+        const scrollToWorkshop =document.getElementById(JSON.stringify(currentWorkshop.workshop?.id)?.concat("-card"))
+        if(scrollToWorkshop){
+          scrollToWorkshop.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      else{
+        if(page && category){
+          dispatch(getWorkshops(page, category))
+        }
+      }
+    }, [page,category]);
 
-    const setPageHandler = () => {
-      setPage((prevState) => prevState + 1);
-    };
+    
+   
     return (
-      <div className="workshop-list-wrap">
+      <div  className="workshop-list-wrap">
         <div className="filters">
           <p>Filter by category:</p>
           <ul className="category-list">
-            <li onClick={() => {
-            dispatch(resetWorkshopList())
-              dispatch(getWorkshops(page))
+            {categoryList.map((categoryElem,idx) => (
+              <li key ={idx} id={categoryElem} className={category ===categoryElem ? "disabled" : "active"} onClick={() => {
+                dispatch(resetWorkshopList())
+                dispatch(changeCategory(categoryElem))
+                // setCategory((prevState) => prevState !== categoryElem ? categoryElem : prevState)
               }}>
-              All
+              {categoryElem==="design" && <BrushIcon />}
+              {categoryElem==="frontend" && <DesktopWindowsIcon/>}
+              {categoryElem==="backend" && <CodeIcon/>}
+              {categoryElem==="marketing" && <FlashOnRoundedIcon/>}
+            
+              {categoryElem}
             </li>
-            <li
+            ))}
+            {/* <li
               onClick={() => {
+                dispatch(resetWorkshopList())
+                setPage(1)
                 setCategory("design")
               }}
             >
@@ -57,6 +86,8 @@ const Homepage: React.FC<{ onClick?: React.MouseEventHandler<HTMLElement> }> =
             </li>
             <li
               onClick={() => {
+                dispatch(resetWorkshopList())
+                setPage(1)
                 setCategory("frontend")
               }}
             >
@@ -64,6 +95,8 @@ const Homepage: React.FC<{ onClick?: React.MouseEventHandler<HTMLElement> }> =
             </li>
             <li
               onClick={() => {
+                dispatch(resetWorkshopList())
+                setPage(1)
                 setCategory("backend")
               }}
             >
@@ -71,15 +104,16 @@ const Homepage: React.FC<{ onClick?: React.MouseEventHandler<HTMLElement> }> =
             </li>
             <li
               onClick={() => {
+                dispatch(resetWorkshopList())
                 setCategory("marketing")
                 setPage(1)
               }}
             >
               <FlashOnRoundedIcon /> Marketing
-            </li>
+            </li> */}
           </ul>
         </div>
-        <WorkshopList onClick={setPageHandler} />
+        <WorkshopList/>
       </div>
     );
   };

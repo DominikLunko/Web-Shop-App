@@ -4,16 +4,20 @@ import './CartIconSidebar.scss'
 import Brightness1Icon from '@material-ui/icons/Brightness1';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
-const CartIconSidebar = () => {
+interface MyProps{
+    numOfItems:number
+}
 
-    const numberOfItems = 1;
+
+const CartIconSidebar:React.FC<MyProps> = ({numOfItems}) => {
+
     return (
         <div className="cart">
         <div className="cart-icon">
-        {numberOfItems > 0 &&<Brightness1Icon className="blue-dot-sidebar"/>}
+        {numOfItems > 0 &&<Brightness1Icon className="blue-dot-sidebar"/>}
         <ShoppingCartOutlinedIcon />
         </div>
-        <p className="cart-number-sidebar">{numberOfItems > 0 ? numberOfItems == 1 ? `${numberOfItems}Workshop` : `${numberOfItems} Workshops ` : "Cart is Empty"}</p>
+        <p className="cart-number-sidebar">{numOfItems > 0 ? numOfItems == 1 ? `${numOfItems}Workshop` : `${numOfItems} Workshops ` : "Cart is Empty"}</p>
     </div>
     )
 }

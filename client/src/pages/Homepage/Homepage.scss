@@ -18,6 +18,11 @@
             list-style: none;
             margin:5px;
 
+            .disabled{
+                pointer-events: none;
+                opacity: 0.6;
+            }
+
             li{
                 margin: 5px;
                 cursor:pointer;

@@ -5,6 +5,7 @@ import {
     GET_WORKSHOP_DETAILS_FAIL,
     GET_WORKSHOP_DETAILS_REQUEST,
     GET_WORKSHOP_DETAILS_SUCCESS,
+    WORKSHOP_DETAILS_RESET,
   } from "../actions/workshopDetailsActionTypes";
   
   interface DefaultStateI {
@@ -12,6 +13,7 @@ import {
     workshop?: Workshop;
     user?:User,
     error?: string;
+    similarWorkshops?: Workshop
   }
   const defaultState: DefaultStateI = {
     loading: false,
@@ -25,21 +27,32 @@ import {
     switch (action.type) {
       case GET_WORKSHOP_DETAILS_REQUEST:
               return {
+                ...state,
                 loading: true,
                 
               };
           
+      case WORKSHOP_DETAILS_RESET:
+              return{
+                ...state,
+                workshop:undefined,
+                user:undefined,
+                similarWorkshops:undefined
+              }
+      
       case GET_WORKSHOP_DETAILS_SUCCESS:
     
           return {
             ...state,
             loading: false,
             workshop: action.payload.workshop,
-            user: action.payload.user
+            user: action.payload.user,
+            similarWorkshops: action.payload.similarWorkshops
           };
         
       case GET_WORKSHOP_DETAILS_FAIL:
         return {
+          ...state,
           loading: false,
           error: action.payload,
         };

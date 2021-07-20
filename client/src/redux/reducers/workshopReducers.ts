@@ -4,18 +4,27 @@ import {
   GET_WORKSHOP_FAIL,
   GET_WORKSHOP_REQUEST,
   GET_WORKSHOP_SUCCESS,
-  GET_WORKSHOP_BY_CATEGORY,
   RESET_WORKSHOP_LIST,
+  PAGE_AND_CATEGORY,
+  INCREASE_PAGE_NUMBER,
+  CHANGE_CATEGORY,
 } from "../actions/workshopActionTypes";
 
-interface DefaultStateI {
+export interface DefaultStateI {
   loading?: boolean;
   workshops: Workshop[];
   error?: string;
+  page?: number;
+  category?: string;
+  numberOfData?: number;
+  hasMore?: boolean;
 }
 const defaultState: DefaultStateI = {
   loading: false,
   workshops: [],
+  page: 1,
+  category: "all",
+  hasMore: true,
   // error:""
 };
 const workshopReducer = (
@@ -23,76 +32,106 @@ const workshopReducer = (
   action: WorkshopDispatchTypes
 ): DefaultStateI => {
   switch (action.type) {
-    case GET_WORKSHOP_BY_CATEGORY:
-      console.log(action.payload)
+    case INCREASE_PAGE_NUMBER:
+      if (state.page && state.numberOfData) {
+        if ((state.page + 1) * 9 >= state.numberOfData) {
+          return {
+            ...state,
+            page: state.page + 1,
+            hasMore: false,
+          };
+        }
+        return {
+          ...state,
+          page: state.page + 1,
+        };
+      }
       return {
-        loading: false,
-        workshops: action.payload,
+        ...state,
+      };
+
+    case CHANGE_CATEGORY:
+      if (state.page) {
+        if (state.page * 9 >= action.payload.numberOfData) {
+          return {
+            ...state,
+            numberOfData: action.payload.numberOfData,
+            page: 1,
+            category: action.payload.category,
+            hasMore: true,
+          };
+        }
+        return {
+          ...state,
+          numberOfData: action.payload.numberOfData,
+          page: 1,
+          category: action.payload.category,
+          hasMore: true,
+        };
+      }
+
+      return {
+        ...state,
+      };
+    case PAGE_AND_CATEGORY:
+      if ("payload" in action) {
+        return {
+          workshops: state.workshops,
+          page: action.payload.page,
+          category: action.payload.category,
+        };
+      }
+      return {
+        ...state,
       };
 
     case RESET_WORKSHOP_LIST:
-      return (state = {
+      return {
+        ...state,
         workshops: [],
-      });
+      };
     case GET_WORKSHOP_REQUEST:
       if (state.workshops?.length > 0) {
         return {
+          ...state,
           workshops: state.workshops,
         };
       } else {
         return {
+          ...state,
           loading: true,
-          workshops: state.workshops,
+          workshops: [],
         };
       }
+
     case GET_WORKSHOP_SUCCESS:
       if (state.workshops) {
         return {
           ...state,
           loading: false,
-          workshops: [...state.workshops, ...action.payload],
+          numberOfData:action.payload.numberOfData,
+          workshops: [...state.workshops, ...action.payload.workshops],
         };
       } else {
         return {
           ...state,
           loading: false,
-          workshops: action.payload,
+          numberOfData:action.payload.numberOfData,
+          workshops: action.payload.workshops,
         };
       }
     case GET_WORKSHOP_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload,
         workshops: [],
       };
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 };
 
 export default workshopReducer;
-
-// export const getWorkshopDetailsReducer = (state = { product: {}}, action) => {
-//     switch(action.type){
-//         case GET_PRODUCT_DETAILS_REQUEST:
-//             return {
-//                 loading: true,
-//             }
-//         case GET_PRODUCT_DETAILS_SUCCESS:
-//             return {
-//                 loading: false,
-//                 product: action.payload
-//             }
-//         case GET_PRODUCT_DETAILS_FAIL:
-//             return {
-//                 loading: false,
-//                 error: action.payload
-//             }
-//         case GET_PRODUCT_DETAILS_RESET:
-//             return {
-//                 product: {}
-//             }
-//         default:
-//             return state;
-//     }
-// }
