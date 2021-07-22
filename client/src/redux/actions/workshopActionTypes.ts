@@ -36,21 +36,14 @@ export interface WorkshopSuccess {
     type: typeof GET_WORKSHOP_SUCCESS,
     payload: {
         workshops:Workshop[],
-        numberOfData:number
+        numberOfData:number,
+        loadMore:boolean,
     }
 }
 
 
 export interface ResetWorkshopList {
     type: typeof RESET_WORKSHOP_LIST,
-    
-}
-export interface GetPageAndCategory {
-    type: typeof PAGE_AND_CATEGORY,
-    payload:{
-        page:number,
-        category:string
-    }
     
 }
 
@@ -62,9 +55,9 @@ export interface IncreasePageNumber {
 export interface ChangeCategory {
     type: typeof CHANGE_CATEGORY,
     payload:{
-        category:string,
-        numberOfData:number
+        category:string
+       
     }
 }
 
-export type WorkshopDispatchTypes = WorkshopLoading | WorkshopFail | WorkshopSuccess | ResetWorkshopList | GetPageAndCategory | IncreasePageNumber | ChangeCategory
+export type WorkshopDispatchTypes = WorkshopLoading | WorkshopFail | WorkshopSuccess | ResetWorkshopList /* | GetPageAndCategory */ | IncreasePageNumber | ChangeCategory

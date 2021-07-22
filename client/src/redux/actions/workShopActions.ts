@@ -12,39 +12,43 @@ import {
   CHANGE_CATEGORY,
 } from "./workshopActionTypes";
 
+import * as API from '../../api'
+
 export const getWorkshops =
   (page: number, category: string) =>
-  async (dispatch: Dispatch<WorkshopDispatchTypes>) => {
+  async (dispatch: Dispatch<WorkshopDispatchTypes>,getState:any) => {
+    
     try {
-      dispatch({
-        type: GET_WORKSHOP_REQUEST,
-      });
-
-      if (category != "all") {
-        const { data } = await axios.get(
-          `http://localhost:3001/workshops?category=${category}&_page=${page}&_limit=9`
-        );
-        const allData = await axios.get(`http://localhost:3001/workshops?category=${category}`);
+      const backToHome = getState().workshopDetails.backToHomePage
+     
         dispatch({
-          type: GET_WORKSHOP_SUCCESS,
-          payload: {
-            workshops: data,
-            numberOfData: allData.data.length,
-          },
+          type: GET_WORKSHOP_REQUEST,
         });
-      } else {
-        const { data } = await axios.get(
-          `http://localhost:3001/workshops?_page=${page}&_limit=9`
-        );
-        const allData = await axios.get("http://localhost:3001/workshops");
-        dispatch({
-          type: GET_WORKSHOP_SUCCESS,
-          payload: {
-            workshops: data,
-            numberOfData: allData.data.length,
-          },
-        });
-      }
+  
+        if (category != "all") {
+          const { data } = await API.getCategoryByPage(page, category)
+          const allData = await API.getMaxCountOfCategory(category);
+          dispatch({
+            type: GET_WORKSHOP_SUCCESS,
+            payload: {
+              workshops: data,
+              numberOfData: allData.data.length,
+              loadMore:backToHome
+            },
+          });
+        } else {
+          const { data } = await API.getAllCategoryByPage(page)
+          const allData = await API.getMaxCountOfAllCategory()
+          dispatch({
+            type: GET_WORKSHOP_SUCCESS,
+            payload: {
+              workshops: data,
+              numberOfData: allData.data.length,
+              loadMore:backToHome
+            },
+          });
+        }
+      
     } catch (error) {
       dispatch({
         type: GET_WORKSHOP_FAIL,
@@ -62,17 +66,6 @@ export const resetWorkshopList =
       type: RESET_WORKSHOP_LIST,
     });
 
-export const pageAndCategory =
-  (page: number, category: string) =>
-  async (dispatch: Dispatch<WorkshopDispatchTypes>) =>
-    dispatch({
-      type: PAGE_AND_CATEGORY,
-      payload: {
-        page: page,
-        category: category,
-      },
-    });
-
 export const increasePage =
   () => async (dispatch: Dispatch<WorkshopDispatchTypes>) => {
     dispatch({
@@ -81,15 +74,19 @@ export const increasePage =
   };
 export const changeCategory =
   (category: string) => async (dispatch: Dispatch<WorkshopDispatchTypes>) => {
-    let URL = `http://localhost:3001/workshops`;
-    if (category !== "all") URL = URL + `?category=${category}`;
-    const { data } = await axios.get(URL);
+    // let response;
+    // if (category !== "all") {
+    //   response = await API.getMaxCountOfCategory(category);
+    // }
+    //  else{
+    //   response = await API.getMaxCountOfAllCategory();
+    //  }
 
     dispatch({
       type: CHANGE_CATEGORY,
       payload: {
         category: category,
-        numberOfData: data.length,
+        // numberOfData: response.data.length,
       },
     });
   };

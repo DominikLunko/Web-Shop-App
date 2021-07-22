@@ -1,33 +1,36 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import {
-    WorkshopDetailsDispatchTypes,
-    GET_WORKSHOP_DETAILS_REQUEST,
-    GET_WORKSHOP_DETAILS_SUCCESS,
-    GET_WORKSHOP_DETAILS_FAIL,
-    WORKSHOP_DETAILS_RESET,
+  WorkshopDetailsDispatchTypes,
+  GET_WORKSHOP_DETAILS_REQUEST,
+  GET_WORKSHOP_DETAILS_SUCCESS,
+  GET_WORKSHOP_DETAILS_FAIL,
+  WORKSHOP_DETAILS_RESET,
 } from "./workshopDetailsActionTypes";
 
+import * as API from '../../api'
+
 export const getWorkshopDetail =
-  (id:number, userId:number) =>
-  async (dispatch: Dispatch<WorkshopDetailsDispatchTypes>) => {
+  (id: number) =>
+  async (dispatch: Dispatch<WorkshopDetailsDispatchTypes>, getState: any) => {
     try {
       dispatch({
         type: GET_WORKSHOP_DETAILS_REQUEST,
       });
-      const resWorkshop = await axios.get(`http://localhost:3001/workshops/${id}`);
-      const resUser = await axios.get(`http://localhost:3001/users/${userId}`);
-      const similarWorkshops = await axios.get(`http://localhost:3001/workshops?category=${resWorkshop.data.category}&_limit=9`);
-      setTimeout(()=>{
-          dispatch({
-            type: GET_WORKSHOP_DETAILS_SUCCESS,
-            payload: {
-                workshop:resWorkshop.data,
-                user:resUser.data,
-                similarWorkshops:similarWorkshops.data
-            },
-          });
-      },500)
+      const resWorkshop = await API.getWorkshopById(id)
+      const resUser = await API.getUserByWorkshopUserID(resWorkshop.data.userId)
+      const similarWorkshops = await API.getSimilarWorkshops(resWorkshop.data.category,id)
+       
+      
+      
+      dispatch({
+        type: GET_WORKSHOP_DETAILS_SUCCESS,
+        payload: {
+          workshop: resWorkshop.data,
+          user: resUser.data,
+          similarWorkshops: similarWorkshops.data,
+        },
+      });
     } catch (error) {
       dispatch({
         type: GET_WORKSHOP_DETAILS_FAIL,
@@ -39,12 +42,9 @@ export const getWorkshopDetail =
     }
   };
 
-  export const workshopDetailReset =
-  () =>
- (dispatch: Dispatch<WorkshopDetailsDispatchTypes>) => {
-  
-      dispatch({
-        type: WORKSHOP_DETAILS_RESET,
-      });
-    
+export const workshopDetailReset =
+  () => (dispatch: Dispatch<WorkshopDetailsDispatchTypes>) => {
+    dispatch({
+      type: WORKSHOP_DETAILS_RESET,
+    });
   };

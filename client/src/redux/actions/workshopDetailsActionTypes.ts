@@ -38,7 +38,7 @@ export interface WorkshopDetailsSuccess {
     payload: {
         workshop:Workshop,
         user:User,
-        similarWorkshops:Workshop
+        similarWorkshops:Workshop[]
     }
 }
 

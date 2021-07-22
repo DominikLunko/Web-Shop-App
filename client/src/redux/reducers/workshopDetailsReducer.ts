@@ -13,12 +13,13 @@ import {
     workshop?: Workshop;
     user?:User,
     error?: string;
-    similarWorkshops?: Workshop
+    similarWorkshops?: Workshop [];
+    backToHomePage:boolean
   }
   const defaultState: DefaultStateI = {
     loading: false,
     error:"",
-    
+    backToHomePage:false
   };
   const workshopDetailsReducer = (
     state: DefaultStateI = defaultState,
@@ -37,17 +38,18 @@ import {
                 ...state,
                 workshop:undefined,
                 user:undefined,
-                similarWorkshops:undefined
+                similarWorkshops:undefined,
               }
       
       case GET_WORKSHOP_DETAILS_SUCCESS:
-    
           return {
             ...state,
             loading: false,
             workshop: action.payload.workshop,
             user: action.payload.user,
-            similarWorkshops: action.payload.similarWorkshops
+            similarWorkshops: action.payload.similarWorkshops,
+            backToHomePage:true
+
           };
         
       case GET_WORKSHOP_DETAILS_FAIL:

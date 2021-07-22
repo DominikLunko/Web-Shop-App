@@ -5,7 +5,7 @@ import {
   GET_WORKSHOP_REQUEST,
   GET_WORKSHOP_SUCCESS,
   RESET_WORKSHOP_LIST,
-  PAGE_AND_CATEGORY,
+  // PAGE_AND_CATEGORY,
   INCREASE_PAGE_NUMBER,
   CHANGE_CATEGORY,
 } from "../actions/workshopActionTypes";
@@ -51,11 +51,10 @@ const workshopReducer = (
       };
 
     case CHANGE_CATEGORY:
-      if (state.page) {
-        if (state.page * 9 >= action.payload.numberOfData) {
+      if (state.page && state.numberOfData) {
+        if (state.page * 9 >= state.numberOfData) {
           return {
             ...state,
-            numberOfData: action.payload.numberOfData,
             page: 1,
             category: action.payload.category,
             hasMore: true,
@@ -63,7 +62,6 @@ const workshopReducer = (
         }
         return {
           ...state,
-          numberOfData: action.payload.numberOfData,
           page: 1,
           category: action.payload.category,
           hasMore: true,
@@ -73,18 +71,7 @@ const workshopReducer = (
       return {
         ...state,
       };
-    case PAGE_AND_CATEGORY:
-      if ("payload" in action) {
-        return {
-          workshops: state.workshops,
-          page: action.payload.page,
-          category: action.payload.category,
-        };
-      }
-      return {
-        ...state,
-      };
-
+   
     case RESET_WORKSHOP_LIST:
       return {
         ...state,

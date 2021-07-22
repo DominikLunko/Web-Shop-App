@@ -3,10 +3,12 @@ import { Workshop } from "../actions/workshopActionTypes";
 import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart } from "../actions/cartActionTypes";
 
   export interface DefaultStateI {
-    cartItems: Cart[];
+    products: Cart[];
+    // cost:number
   }
   const defaultState: DefaultStateI = {
-    cartItems: [],
+    products: [],
+    // cost:0
   };
 
 
@@ -17,7 +19,7 @@ export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispa
                 ...action.payload
             }
 
-            const existItem = state.cartItems.find((x) => x.id === item.id);
+            const existItem = state.products.find((x) => x.id === item.id);
 
             if(existItem){
                 if(item.fromCart == false){
@@ -26,21 +28,21 @@ export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispa
                 return {
                     ...state,
                     // cost:state.cost + (action.payload.price*action.payload.qty),
-                    cartItems: state.cartItems.map((x) => x.id === existItem.id ? item : x)
+                    products: state.products.map((x) => x.id === existItem.id ? item : x)
                 }
             } else {
                 return {
                     ...state,
                     // cost:state.cost + action.payload.price*action.payload.qty,
-                    cartItems: [...state.cartItems, item],
+                    products: [...state.products, item],
                 };
             }
         
         case REMOVE_FROM_CART:
             return {
                 ...state,
-                cartItems: state.cartItems.filter((x) => x.id !== action.payload)
-                // cost:state.cost - 
+                products: state.products.filter((x) => x.id !== action.payload)
+                // cost:state.cost - state.products.find((x) => x.id !== action.payload)?.qty*pr
             }
 
         default:
