@@ -1,0 +1,50 @@
+.details-container{
+    display: flex;
+    flex-direction: row;
+    
+    .workshop-detail-wrapper{
+        flex:0.7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin:20px;
+        padding:20px;
+
+
+        .details-img{
+            width:1040px;
+            height:382px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .details-cart-div{
+            display: flex;
+            
+        }
+    }
+    .button-section{
+        height:100vh;
+        flex:0.25;
+        display:flex;
+        
+        .back-section{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: absolute;
+            top:20;
+            margin:20px;
+            margin-top: 80px;
+        }
+        .arrow-back{
+            margin:5px;
+            margin-top:-5px;
+            font-size:35px;
+        }
+        .back{
+            font-size:20px;
+            font-weight: bold;
+        }
+    }
+}

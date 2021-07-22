@@ -31,8 +31,11 @@ interface CartType {
 const CartItem: React.FC<CartType> = ({ imageUrl, title, price, qty, id,qtyChangeHandler, removeHandler }) => {
 
   const dispatch = useDispatch()
-    const numberOfBuy = [1,2,3,4,5,6,7,8,9,10]
-  const decimalPrice = price.toFixed(2);
+    const numberOfBuy = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    let decimalPrice
+    if(price){
+      decimalPrice = price.toFixed(2);
+    }
   return (
     <Card className="cart-card">
       <CardImg src={imageUrl} alt="Card image cap" className="cart-img" />
@@ -49,7 +52,7 @@ const CartItem: React.FC<CartType> = ({ imageUrl, title, price, qty, id,qtyChang
                     <option key={number} value={number}>{number}</option>
                 ))}
             </select>       
-        <CardSubtitle tag="h6" className="price">
+        <CardSubtitle tag="h6" className="cartItem-price">
           {decimalPrice}
           <p>EUR</p>
         </CardSubtitle>

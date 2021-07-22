@@ -12,16 +12,16 @@ import { RootStore } from '../../../redux/store';
 const CartIcon: React.FC<any> = ({onClick})=> {
 
     const cartState = useSelector((state: RootStore) => state.cart);
-    const { cartItems} = cartState;
+    const { products} = cartState;
 
 
     return (
         <div className="cart" onClick={onClick}>
         <div className="cart-icon">
-        {cartItems.length > 0 &&<Brightness1Icon className="blue-dot"/>}
-        <ShoppingCartOutlinedIcon />
+        {products.length > 0 &&<Brightness1Icon className="blue-dot"/>}
+        <ShoppingCartOutlinedIcon className="shopping-icon"/>
         </div>
-        <p className="cart-number">{cartItems.length > 0 ? cartItems.length == 1 ? `${cartItems.length}Workshop in cart` : `${cartItems.length} Workshops in cart ` : "Cart is Empty"}</p>
+        <p className="cart-number">{products.length > 0 ? products.length == 1 ? `${products.length} Workshop in cart` : `${products.length} Workshops in cart ` : "Cart is Empty"}</p>
     </div>
     )
 }

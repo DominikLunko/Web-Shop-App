@@ -1,17 +1,53 @@
+.title{
+
+    h2{
+        font-size:45px;
+        font-weight: bold;
+
+        @media screen and(max-width:560px)  {
+            font-size: 25px;
+            margin-left: 20px;
+        }
+    }
+    p{
+        font-size: 28px;
+        color:gray;
+
+        span{
+            font-weight: bold;
+            color:black;
+        }
+        @media screen and(max-width:560px)  {
+         font-size: 15px;
+            margin-left:20px;
+        }
+    }
+}
+
 .cards {
     flex:0.75;
     margin-top: 55px;
+    @media screen and(max-width:560px)  {
+           margin-top:75px;
+           flex:0.75;
+     }
+     @media screen and(max-width:425px)  {
+        margin-top:50px;
+  }
 }
 
 .cards-container{
     padding-left: 0px !important;
     margin-left: 0px !important;
+    max-width:2000px !important;
 }
 
 .load-more{
     position: absolute;
+    margin:5px;
     right:15%;
     cursor:pointer;
     border-bottom: 2px solid #0097CC;
-
+    font-size: 25px;
+    font-weight: bold;
 }

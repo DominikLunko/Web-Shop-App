@@ -8,27 +8,43 @@
     
     & .cart-icon{
         position: relative;
-
         @media screen and(max-width:425px) {
             right:0;
         }
 
+
+        
+        .shopping-icon {
+            font-size: 50px;
+
+            @media screen and  (max-width:1920px){
+                font-size: 47px;          
+              }
+        }
         & .blue-dot{
             color:#00AAE4 !important;
-            font-size: 10px;
+            font-size: 20px;
             position: absolute;
             top:0;
-            right:0%;
-            @media screen and(max-width:425px) {
-                display: none;
-            }
+            right:2%;
+            @media screen and  (max-width:1920px){
+                font-size: 18px;          
+              }
+            // @media screen and(max-width:425px) {
+            //     display: none;
+            // }
         } 
     }
 
   & .cart-number{
+      font-size: 32px;
       font-weight: bold;
       margin:0 !important;
       font-family: "Times New Roman", Times, serif;
+
+      @media screen and  (max-width:1920px){
+        font-size: 30px;          
+      }
       @media screen and(max-width:425px) {
         display:none ;
     }

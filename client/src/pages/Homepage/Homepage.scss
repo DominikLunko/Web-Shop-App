@@ -1,32 +1,104 @@
 .workshop-list-wrap {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: calc(100% + 100px);;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  min-height: calc(100vh - 30px);
 
-    .filters{
-        flex:0.2;
-        margin-top:100px;
-        display: flex;
-        flex-direction: column;
+  @media screen and(max-width:425px)  {
+    flex-direction: column;
+  }
 
-        p {
-            margin-left: 10px;   
-        }
+  .filters {
+    position: relative;
+    flex: 0.2;
+    margin-top: 115px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        .category-list{
-            list-style: none;
-            margin:5px;
-
-            .disabled{
-                pointer-events: none;
-                opacity: 0.6;
-            }
-
-            li{
-                margin: 5px;
-                cursor:pointer;
-            }
-        }
+    @media screen and(max-width:425px)  {
+      margin-top: 50px;
     }
+
+    .categorySelect{
+      display: none;
+      width:60%;
+      border-radius: 10px;
+      border: 2px solid #00AAE4;
+      color:#00AAE4;
+
+      @media screen and(max-width:425px)  {
+          display:block;
+      }
+    }
+
+    .filters-inside-div {
+        position: sticky;
+        top:200px;
+        transition: all 0.2 ease-in-out;
+        @media screen and(max-width:560px)  {
+        }
+
+        @media screen and(max-width:425px)  {
+          display:none;
+      }
+      p {
+        margin-left: 50px;
+        font-size: 28px;
+        color:grey;
+
+        @media screen and(max-width:560px)  {
+          font-size:13px;
+          margin-left: 10px;
+        }
+      }
+
+      .category-list {
+        list-style: none;
+        margin: 5px;
+        
+        li{
+          padding:5px;
+          font-weight: bold;
+          font-size: 24px;
+
+          @media screen and(max-width:560px)  {
+            font-size:13px;
+          }
+          .categories-icon{
+            margin-right:5px;
+
+            @media screen and(max-width:560px)  {
+              font-size:15px;
+            }
+          }
+          
+          :first-child{
+            margin-left:-25px;
+            padding:0px;
+          }
+        }
+
+        .disabled {
+          pointer-events: none;
+          opacity: 0.6;
+        }
+
+        li {
+          margin: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.footer{
+  height:80px;
+    margin-top:80px;
+    clear: both;
+    width:100%;
+    position: relative;
+    background-color: gray;
 }

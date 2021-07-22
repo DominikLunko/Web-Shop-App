@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch,useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./Workshop.scss";
 
@@ -33,7 +33,6 @@ interface WorkshopType {
   date: String;
   category: string;
   userId: number;
-  
 }
 
 const Workshop: React.FC<WorkshopType> = ({
@@ -45,36 +44,29 @@ const Workshop: React.FC<WorkshopType> = ({
   category,
   userId,
 }) => {
-  // const cartState = useSelector((state: RootStore) => state.cart);
-  // const { cartItems} = cartState;
+  
   const dispatch = useDispatch();
   const clearDate = date.split("T")[0];
   const onlyTime = date.split("T")[1];
   const clearTime = onlyTime.split(".")[0];
   const decimalPrice = price.toFixed(2);
- 
 
-  
+  const [plusOne, setPlusOne] = useState(false);
 
   return (
-    <Card
-    
-      className="card-project"
-      id={JSON.stringify(id)?.concat("-card")}
-    >
+    <Card className="card-project" id={JSON.stringify(id)?.concat("-card")}>
       <Link to={`/workshop/${id}`} className="info__button">
-      <CardImg
-        top
-        src={imageUrl}
-        alt="Card image cap"
-        style={{
-          borderRadius: "15px 15px 0px 0px",
-          height: "180px",
-          objectFit: "cover",
-        }}
-        onClick={() => {
-          dispatch(getWorkshopDetail(id, userId))}}
-      />
+        <CardImg
+          top
+          src={imageUrl}
+          alt="Card image cap"
+          style={{
+            borderRadius: "15px 15px 0px 0px",
+            height: "180px",
+            objectFit: "cover",
+          }}
+         
+        />
       </Link>
       <CardBody className="card-body">
         {category === "design" && <BrushIcon className="category-icon" />}
@@ -87,24 +79,39 @@ const Workshop: React.FC<WorkshopType> = ({
         )}
         <div className="date-time">
           <div className="dt">
-            <EventIcon />
+            <EventIcon className="date-icon"/>
             <p>{clearDate}</p>
           </div>
           <div className="dt">
-            <ScheduleIcon />
-            <p>{clearTime}</p>
+            <ScheduleIcon className="date-icon"/>
+            <p>{clearTime} h</p>
           </div>
         </div>
         <Link to={`/workshop/${id}`} className="info__button">
-        <CardTitle className="title-card" tag="h5" onClick={() => dispatch(getWorkshopDetail(id, userId))}>
-          {title}
-        </CardTitle>
+          <CardTitle
+            className="title-card"
+            tag="h5" 
+          >
+            {title}
+          </CardTitle>
         </Link>
         <CardSubtitle tag="h6" className="price">
           {decimalPrice}
           <p>EUR</p>
         </CardSubtitle>
-        <Button className="button" onClick={() => dispatch(addToCart(id,1,false))}>Add To Cart</Button>
+        <p className={plusOne ? "plus-one-active" : "plus-one"}>+1</p>
+        <Button
+          className="button"
+          onClick={() => {
+            dispatch(addToCart(id, 1, false));
+            setPlusOne((prevState) => !prevState);
+            setTimeout(()=>{
+              setPlusOne((prevState) => !prevState)
+            },1000)
+          }}
+        >
+          Add To Cart
+        </Button>
       </CardBody>
     </Card>
   );

@@ -1,7 +1,7 @@
 .nav {
   position: sticky;
   top:0;
-  z-index: 999;
+  z-index: 200;
   box-shadow: 2px 2px 8px 2px lightgray;
 }
 
@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   background: #ffce25;
-  height: 90px;
+  height: 120px;
   position: sticky;
   position: -webkit-sticky;
   top:0;
@@ -22,13 +22,13 @@
     margin-left:5%;
     & .logo-link{
       text-decoration: none;
-      top:50%;
+      top:40%;
       & .tinel-text {
-        letter-spacing: 1px;
+        letter-spacing: -5px;
+        font-style:oblique;
         color: #ffffff;
-        font-size: 30px;
+        font-size: 50px;
         font-weight: bold;
-        font-family: "Comic Sans MS", "Comic Sans", cursive;
         margin:0 !important;
         -webkit-text-stroke-width: 0.5px;
         -webkit-text-stroke-color: #fff;
@@ -39,9 +39,20 @@
       }
   
       & .workshop-text {
+        position: absolute;
+        font-style: oblique;
+        font-weight: bold;
+        letter-spacing: -2px;
+        left:6%;
+        bottom:0%;
+        font-size: 25px;
         color: #1d1d1b;
         font-weight: 600;
         margin:0 !important;
+        margin-bottom: 15px !important;
+        margin-right: 20px !important;
+
+        
       }
     }
 

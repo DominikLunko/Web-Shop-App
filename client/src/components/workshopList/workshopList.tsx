@@ -22,7 +22,7 @@ const WorkshopList: React.FC<any> = () => {
     <div className="cards">
       <div className="title">
           <h2>Workshops</h2>
-          <p>Displayed: {workshops.length}</p>
+          <p>Displayed: <span>{workshops.length}</span></p>
       </div>
       {loading ? (
         <CircularProgress />
@@ -49,7 +49,7 @@ const WorkshopList: React.FC<any> = () => {
           </Row>
         </Container>
       )}
-      <p className="load-more" onClick={()=>dispatch(increasePage())}>{hasMore && workshops.length >0 && "Load more"}</p>
+      <p className="load-more" onClick={()=>dispatch(increasePage())}>{hasMore && workshops.length >= 9 && "Load more"}</p>
     </div>
   );
 };
