@@ -13,11 +13,10 @@ import { removeFromCart } from "./cartActions";
 
 export const createOrder =
   () => async (dispatch: Dispatch<OrderDispatchTypes>, getState: any) => {
-    // const { data } = await axios.get(`/api/products/${id}`);
     const products = getState().cart.products;
     let copy_product: Product[] = [];
     products.map((product: Cart) => {
-      const { fromCart, ...copy } = product;
+      const { singleAdd, ...copy } = product;
       copy_product.push(copy);
     });
     const total = products.reduce(
@@ -36,7 +35,7 @@ export const createOrder =
     //     payload: {
     //         ...cartElem,
     //         qty,
-    //         fromCart:fromCart
+    //         singleAdd:singleAdd
     //     }
     // })
   };

@@ -5,7 +5,6 @@ import {
   GET_WORKSHOP_REQUEST,
   GET_WORKSHOP_SUCCESS,
   RESET_WORKSHOP_LIST,
-  // PAGE_AND_CATEGORY,
   INCREASE_PAGE_NUMBER,
   CHANGE_CATEGORY,
 } from "../actions/workshopActionTypes";
@@ -25,7 +24,6 @@ const defaultState: DefaultStateI = {
   page: 1,
   category: "all",
   hasMore: true,
-  // error:""
 };
 const workshopReducer = (
   state: DefaultStateI = defaultState,
@@ -52,14 +50,7 @@ const workshopReducer = (
 
     case CHANGE_CATEGORY:
       if (state.page && state.numberOfData) {
-        if (state.page * 9 >= state.numberOfData) {
-          return {
-            ...state,
-            page: 1,
-            category: action.payload.category,
-            hasMore: true,
-          };
-        }
+        
         return {
           ...state,
           page: 1,

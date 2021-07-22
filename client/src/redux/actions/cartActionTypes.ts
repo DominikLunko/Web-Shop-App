@@ -12,7 +12,7 @@ export type Cart = {
     userId: number,
     imageUrl: string,
     qty:number
-    fromCart:boolean
+    singleAdd:boolean
 }
 
 

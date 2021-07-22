@@ -3,7 +3,7 @@ import { Dispatch } from "react";
 import { ADD_TO_CART, CartDispatchTypes, Cart, REMOVE_FROM_CART } from "./cartActionTypes";
 import { Workshop } from "./workshopActionTypes";
 
-export const addToCart = (id:number, qty:number, fromCart:boolean) => async (dispatch: Dispatch<CartDispatchTypes>, getState:any) =>{
+export const addToCart = (id:number, qty:number, singleAdd:boolean) => async (dispatch: Dispatch<CartDispatchTypes>, getState:any) =>{
     // const { data } = await axios.get(`/api/products/${id}`);
     const cartElem = getState().workshop.workshops.find((workshop: Workshop)=>workshop.id ==id)
     dispatch({
@@ -11,7 +11,7 @@ export const addToCart = (id:number, qty:number, fromCart:boolean) => async (dis
         payload: {
             ...cartElem,
             qty,
-            fromCart:fromCart
+            singleAdd:singleAdd
         }
     })
 

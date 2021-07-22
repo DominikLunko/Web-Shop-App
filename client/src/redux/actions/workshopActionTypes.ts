@@ -37,7 +37,6 @@ export interface WorkshopSuccess {
     payload: {
         workshops:Workshop[],
         numberOfData:number,
-        loadMore:boolean,
     }
 }
 
