@@ -35,6 +35,7 @@ export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispa
             }
         
         case REMOVE_FROM_CART:
+            console.log("TU")
             return {
                 ...state,
                 products: state.products.filter((x) => x.id !== action.payload)

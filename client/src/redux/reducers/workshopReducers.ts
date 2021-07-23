@@ -49,8 +49,7 @@ const workshopReducer = (
       };
 
     case CHANGE_CATEGORY:
-      if (state.page && state.numberOfData) {
-        
+      if (state.page) {
         return {
           ...state,
           page: 1,
@@ -72,7 +71,6 @@ const workshopReducer = (
       if (state.workshops?.length > 0) {
         return {
           ...state,
-          workshops: state.workshops,
         };
       } else {
         return {

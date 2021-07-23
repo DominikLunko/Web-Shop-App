@@ -18,7 +18,19 @@
             font-size: 50px;
 
             @media screen and  (max-width:1920px){
-                font-size: 47px;          
+                font-size: 35px;          
+              }
+              @media screen and  (max-width:1660px){
+                font-size: 32px;          
+              }
+              @media screen and  (max-width:1440px){
+                font-size: 30px;          
+              }
+              @media screen and  (max-width:1200px){
+                font-size: 28px;          
+              }
+              @media screen and  (max-width:900px){
+                font-size: 24px;          
               }
         }
         & .blue-dot{
@@ -28,7 +40,19 @@
             top:0;
             right:2%;
             @media screen and  (max-width:1920px){
-                font-size: 18px;          
+                font-size: 13px;          
+              }
+              @media screen and  (max-width:1660px){
+                font-size: 11px;          
+              }
+              @media screen and  (max-width:1440px){
+                font-size: 10px;          
+              }
+              @media screen and  (max-width:1200px){
+                font-size: 8px;          
+              }
+              @media screen and  (max-width:900px){
+                font-size: 7px;          
               }
             // @media screen and(max-width:425px) {
             //     display: none;
@@ -43,7 +67,19 @@
       font-family: "Times New Roman", Times, serif;
 
       @media screen and  (max-width:1920px){
-        font-size: 30px;          
+        font-size: 26px;          
+      }
+      @media screen and  (max-width:1660px){
+        font-size: 22px;          
+      }
+      @media screen and  (max-width:1440px){
+        font-size: 20px;          
+      }
+      @media screen and  (max-width:1200px){
+        font-size: 18px;          
+      }
+      @media screen and  (max-width:900px){
+        font-size: 16px;          
       }
       @media screen and(max-width:425px) {
         display:none ;

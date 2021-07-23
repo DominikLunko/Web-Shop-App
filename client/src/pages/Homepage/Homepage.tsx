@@ -61,7 +61,7 @@ const Homepage: React.FC<any> = ({ onClick }) => {
       let X = scrollToWorkshop?.offsetLeft;
       let Y = scrollToWorkshop?.offsetTop;
       if (X && Y) {
-        Y = Y - 100;
+        Y = Y - 200;
         window.scrollTo(X, Y);
       }
     } else {
@@ -131,7 +131,11 @@ const Homepage: React.FC<any> = ({ onClick }) => {
         </div>
         <WorkshopList />
       </div>
-      {workshops.length > 0 && <div className="footer">copyright</div>}
+      {workshops.length > 0 && (
+        <div className="footer">
+          <p>© TINEL Meetup 2020.</p>
+        </div>
+      )}
     </>
   );
 };

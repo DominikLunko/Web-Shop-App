@@ -24,7 +24,7 @@ export const getWorkshops =
         type: GET_WORKSHOP_REQUEST,
       });
 
-      if (category != "all") {
+      if (category !== "all") {
         const { data } = await API.getCategoryByPage(page, category);
         const allData = await API.getMaxCountOfCategory(category);
         dispatch({

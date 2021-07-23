@@ -30,7 +30,7 @@ const WorkshopList: React.FC<any> = () => {
         <h2>{error}</h2>
       ) : (
         <Container className="cards-container">
-          <Row className="row-project" xl="3" lg="2" md="2" xs="1">
+          <Row className="row-workshop" xl="3" lg="2" md="2" xs="1">
             {workshops &&
               workshops.map((workshop,idx) => (
                 <Col key={idx}>

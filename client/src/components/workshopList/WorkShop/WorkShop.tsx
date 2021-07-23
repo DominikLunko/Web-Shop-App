@@ -10,6 +10,7 @@ import CodeIcon from "@material-ui/icons/Code";
 import FlashOnRoundedIcon from "@material-ui/icons/FlashOnRounded";
 import EventIcon from "@material-ui/icons/Event";
 import ScheduleIcon from "@material-ui/icons/Schedule";
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 import {
   Card,
@@ -20,8 +21,9 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-import { getWorkshopDetail } from "../../../redux/actions/workShopDetailsAction";
-import { resetWorkshopList } from "../../../redux/actions/workShopActions";
+
+
+
 import { addToCart } from "../../../redux/actions/cartActions";
 import { RootStore } from "../../../redux/store";
 
@@ -61,7 +63,7 @@ const Workshop: React.FC<WorkshopType> = ({
           src={imageUrl}
           alt="Card image cap"
           style={{
-            borderRadius: "15px 15px 0px 0px",
+            borderRadius: "10px 10px 0px 0px",
             height: "180px",
             objectFit: "cover",
           }}
@@ -112,6 +114,13 @@ const Workshop: React.FC<WorkshopType> = ({
         >
           Add To Cart
         </Button>
+        <ShoppingCartOutlinedIcon className="buy-icon" onClick={() => {
+            dispatch(addToCart(id, 1, false));
+            setPlusOne((prevState) => !prevState);
+            setTimeout(()=>{
+              setPlusOne((prevState) => !prevState)
+            },1000)
+          }}/>
       </CardBody>
     </Card>
   );
