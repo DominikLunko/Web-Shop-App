@@ -12,6 +12,8 @@ import EventIcon from "@material-ui/icons/Event";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
+import Moment from 'moment'
+
 import {
   Card,
   CardImg,
@@ -48,7 +50,12 @@ const Workshop: React.FC<WorkshopType> = ({
 }) => {
   
   const dispatch = useDispatch();
-  const clearDate = date.split("T")[0];
+
+
+
+  let clearDate = date.split("T")[0];
+  
+  clearDate = Moment(clearDate).format('DD.MM.YYYY')
   const onlyTime = date.split("T")[1];
   const clearTime = onlyTime.split(".")[0];
   const decimalPrice = price.toFixed(2);

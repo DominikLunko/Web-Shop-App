@@ -37,6 +37,7 @@ export const getWorkshops =
       } else {
         const { data } = await API.getAllCategoryByPage(page);
         const allData = await API.getMaxCountOfAllCategory();
+
         dispatch({
           type: GET_WORKSHOP_SUCCESS,
           payload: {

@@ -181,6 +181,10 @@
     margin-top: 10px;
     font-size: 14px !important;
   }
+  @media  screen and(max-width:340px) {
+    margin-top: 10px;
+    font-size: 12px !important;
+  }
 }
 
 .price {
@@ -351,6 +355,15 @@
 
          & .date-icon{
            font-size: 15px !important;
+         }
+      
+      }
+      @media  screen and(max-width:340px) {
+        font-size: 9px !important;
+        margin-left: 2px;
+
+         & .date-icon{
+           font-size: 12px !important;
          }
       
       }

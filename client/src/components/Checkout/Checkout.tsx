@@ -59,7 +59,7 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
   return (
     <>
       {showCheckout && (
-        <div>
+        <div className="checkout-wrap">
           <div
             className="checkout-div"
             onClick={() => setShowCheckout(false)}

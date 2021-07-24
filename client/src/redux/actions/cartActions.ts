@@ -1,15 +1,16 @@
 import axios from "axios";
 import { Dispatch } from "react";
-import { ADD_TO_CART, CartDispatchTypes, Cart, REMOVE_FROM_CART } from "./cartActionTypes";
+import { ADD_TO_CART, CartDispatchTypes, Cart, REMOVE_FROM_CART, CHANGE_QTY } from "./cartActionTypes";
 import { Workshop } from "./workshopActionTypes";
+import * as API from "../../api";
 
 export const addToCart = (id:number, qty:number, singleAdd:boolean) => async (dispatch: Dispatch<CartDispatchTypes>, getState:any) =>{
-    // const { data } = await axios.get(`/api/products/${id}`);
-    const cartElem = getState().workshop.workshops.find((workshop: Workshop)=>workshop.id ==id)
+    const {data} = await API.addToCartURL(id);
+    const bla = {...data[0]}
     dispatch({
         type: ADD_TO_CART,
         payload: {
-            ...cartElem,
+            ...data[0],
             qty,
             singleAdd:singleAdd
         }
@@ -26,3 +27,4 @@ export const removeFromCart = (id:number) => (dispatch: Dispatch<CartDispatchTyp
 
     localStorage.setItem('cart', JSON.stringify(getState().cart.products))
 };
+

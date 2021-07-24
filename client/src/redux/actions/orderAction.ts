@@ -9,7 +9,6 @@ import {
 } from "./orderActionTypes";
 
 import * as API from "../../api";
-import { removeFromCart } from "./cartActions";
 
 export const createOrder =
   () => async (dispatch: Dispatch<OrderDispatchTypes>, getState: any) => {

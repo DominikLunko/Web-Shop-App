@@ -15,4 +15,6 @@ export const getWorkshopById = (id:number) => API.get(`/workshops/${id}`);
 export const getUserByWorkshopUserID = (userId:number) => API.get(`/users/${userId}`);
 export const getSimilarWorkshops = (category:string, id:number) => API.get(`/workshops?category=${category}&id_ne=${id}&_limit=3`);
 
+export const addToCartURL = (id:number) => API.get(`/workshops?id=${id}`)
+
 export const createOrder = (order:Order) => API.post('/orders', order);

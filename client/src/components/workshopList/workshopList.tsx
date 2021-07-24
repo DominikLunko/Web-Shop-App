@@ -17,7 +17,9 @@ const WorkshopList: React.FC<any> = () => {
   const { loading, error, workshops, hasMore } = workshopState;
   const [allWorkShops, setAllWorkShops] = useState(workshops.length);
   
-
+  const sortedWorkshops = workshops.sort((a, b) =>
+  a.date > b.date ? 1 : -1
+);
   return (
     <div className="cards">
       <div className="title">
@@ -25,14 +27,14 @@ const WorkshopList: React.FC<any> = () => {
           <p>Displayed: <span>{workshops.length}</span></p>
       </div>
       {loading ? (
-        <CircularProgress />
+        <CircularProgress size={50} className="loading-details"/>
       ) : error ? (
-        <h2>{error}</h2>
+        <h2 className="details-error">{error}</h2>
       ) : (
         <Container className="cards-container">
           <Row className="row-workshop" xl="3" lg="2" md="2" xs="1">
             {workshops &&
-              workshops.map((workshop,idx) => (
+              sortedWorkshops.map((workshop,idx) => (
                 <Col key={idx}>
                   <Workshop
                     key={workshop.id}

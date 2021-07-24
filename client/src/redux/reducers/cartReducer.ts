@@ -1,6 +1,6 @@
 import { Workshop } from "../actions/workshopActionTypes";
 
-import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart } from "../actions/cartActionTypes";
+import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart, CHANGE_QTY } from "../actions/cartActionTypes";
 
   export interface DefaultStateI {
     products: Cart[];
@@ -12,6 +12,8 @@ import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart } from "../actio
 
 export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispatchTypes) => {
     switch(action.type){
+
+
         case ADD_TO_CART:
             const item = {
                 ...action.payload
@@ -25,11 +27,13 @@ export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispa
                 }
                 return {
                     ...state,
+                    qtyToChange:action.payload.qty,
                     products: state.products.map((x) => x.id === existItem.id ? item : x)
                 }
             } else {
                 return {
                     ...state,
+                    qtyToChange:action.payload.qty,
                     products: [...state.products, item],
                 };
             }

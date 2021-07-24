@@ -8,7 +8,7 @@ import {
   WORKSHOP_DETAILS_RESET,
 } from "./workshopDetailsActionTypes";
 
-import * as API from '../../api'
+import * as API from "../../api";
 
 export const getWorkshopDetail =
   (id: number) =>
@@ -17,12 +17,15 @@ export const getWorkshopDetail =
       dispatch({
         type: GET_WORKSHOP_DETAILS_REQUEST,
       });
-      const resWorkshop = await API.getWorkshopById(id)
-      const resUser = await API.getUserByWorkshopUserID(resWorkshop.data.userId)
-      const similarWorkshops = await API.getSimilarWorkshops(resWorkshop.data.category,id)
-       
-      
-      
+      const resWorkshop = await API.getWorkshopById(id);
+      const resUser = await API.getUserByWorkshopUserID(
+        resWorkshop.data.userId
+      );
+      const similarWorkshops = await API.getSimilarWorkshops(
+        resWorkshop.data.category,
+        id
+      );
+
       dispatch({
         type: GET_WORKSHOP_DETAILS_SUCCESS,
         payload: {

@@ -1,5 +1,6 @@
  export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const CHANGE_QTY = "CHANGE_QTY"
 
 
 export type Cart = {
@@ -12,7 +13,7 @@ export type Cart = {
     userId: number,
     imageUrl: string,
     qty:number
-    singleAdd:boolean
+    singleAdd:boolean,
 }
 
 
@@ -28,6 +29,7 @@ export interface RemoveFromCart {
     payload:number
     
 }
+
 
 
  export type CartDispatchTypes = AddToCart | RemoveFromCart

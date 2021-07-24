@@ -90,6 +90,10 @@ const Homepage: React.FC<any> = ({ onClick }) => {
                   onClick={() => {
                     dispatch(resetWorkshopList());
                     dispatch(changeCategory(categoryElem.toLowerCase()));
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    });
                   }}
                 >
                   {categoryElem === "Design" && (
@@ -115,6 +119,10 @@ const Homepage: React.FC<any> = ({ onClick }) => {
             onChange={(e) => {
               dispatch(resetWorkshopList());
               dispatch(changeCategory(e.target.value.toLowerCase()));
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
             }}
           >
             {categoryList.map((categoryItem, idx) => (
@@ -131,11 +139,10 @@ const Homepage: React.FC<any> = ({ onClick }) => {
         </div>
         <WorkshopList />
       </div>
-      {workshops.length > 0 && (
-        <div className="footer">
-          <p>© TINEL Meetup 2020.</p>
-        </div>
-      )}
+
+      <div className="footer">
+        <p>© TINEL Meetup 2020.</p>
+      </div>
     </>
   );
 };
