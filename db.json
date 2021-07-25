@@ -196,34 +196,7 @@
     }
   ],
   "orders": [
-    {
-      "products": [
-        {
-          "id": 7,
-          "title": "Data-driven design",
-          "desc": "The commonly assumed meaning of Data in the context of a digital product is the information provided/inputted by users - well, this is not the whole truth. The talk, Data-driven Design is an exploration of ways designers can source data that can impact the product design process and possibly improve business outcomes. This talk is for all aspiring designers and digital experts that would like to learn more from a person with a huge experience in building projects, products, and even communities!",
-          "price": 650,
-          "date": "2020-05-23T13:51:50.417-07:00",
-          "category": "design",
-          "userId": 7,
-          "imageUrl": "https://secure.meetupstatic.com/photos/event/2/d/8/e/highres_482651662.jpeg",
-          "qty": 1
-        },
-        {
-          "id": 2,
-          "title": "YouTube for your business!",
-          "desc": "Aleksandar Ašković aka Kojot is one of the pioneers when it comes to regional YouTube expertise. His tech journey started at the age of 12 when he inserted the first coin into the arcade machine. In 1997 he becomes editor of the renowned Serbian magazine “Svet Kompjutera” and in 2001 he started his first TV show called Game Over. After that, it was time to become a bit serious so in 2019 KursorTV was born, a TV show that was covering mostly tech topics. In 2014 Aleksandar decided to make a switch in his career and dedicate his time to YouTube. During the last 5 years, he was focused on helping brands utilize this platform to a full extent. Kojot considers YouTube channel of “Sport Klub” the prime example of YouTube SEO power. Thanks to the great content and good optimization Sport Klub channel reached[masked] subscribers in under 18 months.",
-          "price": 400,
-          "date": "2019-12-26T13:51:50.417-07:00",
-          "category": "marketing",
-          "userId": 2,
-          "imageUrl": "https://pbs.twimg.com/media/EL--sgSXYAAnOX2.jpg",
-          "qty": 2
-        }
-      ],
-      "total": 1450,
-      "id": 1
-    }
+    
   ],
   "categories": [
     "marketing",
