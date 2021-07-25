@@ -21,7 +21,7 @@ import WorkShop from "../../components/workshopList/WorkShop/WorkShop";
 
 import { CircularProgress } from "@material-ui/core";
 import { getWorkshopDetail } from "../../redux/actions/workShopDetailsAction";
-import { addToCart } from "../../redux/actions/cartActions";
+import { addToCart, openCart } from "../../redux/actions/cartActions";
 
 const WorkShopDetails: React.FC<any> = ({ match, history }) => {
   const workshopDetailsState = useSelector(
@@ -150,8 +150,10 @@ const WorkShopDetails: React.FC<any> = ({ match, history }) => {
                       ))}
                     </select>
                     <button
-                      onClick={() =>
+                      onClick={() =>{
+                        dispatch(openCart())
                         qty && dispatch(addToCart(workShopId, qty, true))
+                      }
                       }
                       className="add-button"
                     >

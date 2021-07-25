@@ -163,11 +163,9 @@
   @media screen and(max-width:650px) {
     left: 10%;
   }
-  @media screen and(max-width:650px) {
-    left: 10%;
-  }
+  
   @media screen and(max-width:500px) {
-    left: 5%;
+    left: 2%;
   }
   @media screen and(max-width:425px) {
     top: 5%;
@@ -196,7 +194,10 @@
       width: 450px;
     }
     @media screen and(max-width:650px) {
-      width: 350px;
+      width: 430px;
+    }
+    @media screen and(max-width:550px) {
+      width: 400px;
     }
 
     @media screen and(max-width:425px) {
@@ -211,21 +212,30 @@
       color: #ff392e;
       font-size: 15px;
       font-weight: 700;
+
+      @media screen and(max-width:1920px) {
+        font-size: 13px;
+        margin: 8px 0px;
+      }
     }
 
     label {
       font-size: 24px;
       font-weight: 700;
       color: #1d1d1b;
-      margin: 20px 0px;
+      margin: 10px 0px;
 
       @media screen and(max-width:1920px) {
         font-size: 16px;
         margin: 8px 0px;
       }
       @media screen and(max-width:1660px) {
-        font-size: 14px;
+        font-size: 12px;
         margin: 6px 0px;
+      }
+      @media screen and(max-width:660px) {
+        font-size: 12px;
+        margin: 4px 0px;
       }
     }
 
@@ -239,23 +249,34 @@
       @media screen and(max-width:1660px) {
         font-size: 14px !important;
       }
+      @media screen and(max-width:660px) {
+        font-size: 12px;
+        margin: 4px 0px;
+      }
     }
 
     .datepicker {
-      font-size: 30px !important;
+      font-size: 25px !important;
       width: 100%;
       border: 0px;
       border-bottom: 2px solid #0097cc;
       @media screen and(max-width:1920px) {
-        font-size: 18px !important;
+        font-size: 16px !important;
+      }
+      @media screen and(max-width:767px) {
+        font-size: 14px !important;
       }
     }
     .datepicker-fail {
-      font-size: 30px !important;
+      font-size: 25px !important;
       border: 0px;
+      width: 100%;
       border-bottom: 2px solid #ff392e;
       @media screen and(max-width:1920px) {
-        font-size: 20px !important;
+        font-size: 16px !important;
+      }
+      @media screen and(max-width:767px) {
+        font-size: 14px !important;
       }
     }
 
@@ -267,6 +288,9 @@
       }
       @media screen and(max-width:1660px) {
         font-size: 22px !important;
+      }
+      @media screen and(max-width:767px) {
+        font-size: 18px !important;
       }
 
       .title-close {
@@ -283,6 +307,9 @@
           @media screen and(max-width:1660px) {
             font-size: 35px !important;
           }
+          @media screen and(max-width:767px) {
+            font-size: 30px !important;
+          }
         }
 
         .closeIcon {
@@ -291,12 +318,21 @@
           @media screen and(max-width:1920px) {
             font-size: 35px !important;
           }
+          @media screen and(max-width:767px) {
+            font-size: 30px !important;
+          }
         }
       }
     }
 
     .input-div {
-      margin: 10px 15px;
+      margin: 10px 10px;
+      @media screen and(max-width:767px) {
+        margin: 5px 10px;
+      }
+      @media screen and(max-width:550px) {
+        margin: 3px 5px;
+      }
 
       .input {
         width: 100%;
@@ -355,7 +391,7 @@
     }
 
     .agree-label {
-      margin: 20px;
+      margin: 10px;
       font-size: 25px;
       display: flex;
       align-items: center;

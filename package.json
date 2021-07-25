@@ -1,0 +1,29 @@
+{
+  "name": "web-shop-app",
+  "version": "1.0.0",
+  "description": "Web shop app for workshops",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "json-server": "^0.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DominikLunko/Web-Shop-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DominikLunko/Web-Shop-App/issues"
+  },
+  "engines": {
+    "node": "15.5.0"
+  },
+  "homepage": "https://github.com/DominikLunko/Web-Shop-App#readme"
+}
