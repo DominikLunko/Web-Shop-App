@@ -227,9 +227,9 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                 </button>
               </form>
             ) : (
-              <div>
-                <h2>Thank You</h2>
-                <p>Your order was successfull</p>
+              <div className="thank-you-div">
+                <h2>Thank You!</h2>
+                <p>Order successfully completed</p>
                 <button
                   className="submit-btn"
                   onClick={() => {

@@ -36,6 +36,9 @@
         @media screen and(max-width:1000px) {
             font-size: 15px;;
         }
+        @media screen and(max-width:320px) {
+          margin-left: 10px;
+      }
     
         & p {
             font-size: 20px;
@@ -72,6 +75,9 @@
         @media screen and(max-width:475px) {
           padding: 3px;
         }
+        @media screen and(max-width:320px) {
+          margin-left: 0px;
+        }
       }
   }
 }
@@ -82,6 +88,10 @@
   height: auto !important;
   width: 105px !important;
   object-fit: cover !important;
+
+  @media screen and(max-width:320px) {
+    width:90px !important;
+  }
 }
 
 .title-bin {
