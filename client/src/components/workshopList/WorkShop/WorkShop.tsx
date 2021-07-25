@@ -26,7 +26,7 @@ import {
 
 
 
-import { addToCart } from "../../../redux/actions/cartActions";
+import { addToCart, openCart } from "../../../redux/actions/cartActions";
 import { RootStore } from "../../../redux/store";
 
 interface WorkshopType {
@@ -113,6 +113,7 @@ const Workshop: React.FC<WorkshopType> = ({
           className="button"
           onClick={() => {
             dispatch(addToCart(id, 1, false));
+            dispatch(openCart())
             setPlusOne((prevState) => !prevState);
             setTimeout(()=>{
               setPlusOne((prevState) => !prevState)

@@ -14,19 +14,16 @@ import { truncate } from 'fs';
 
 
 const App:React.FC = () => {
-  const [show, setShow] = useState(false);
+ 
   const [showCheckout, setShowCheckout] = useState(false)
 
-  function handleShowSidebar(): void{
-    setShow((prevSetShow) => !prevSetShow)
-  }
-
+  
   
 
   return (
     <Router>
-        <Navbar onClick={handleShowSidebar}/>
-        <Cart  onClick={handleShowSidebar}  show={show} setShowCheckout={setShowCheckout}/>
+        <Navbar />
+        <Cart  setShowCheckout={setShowCheckout}/>
         <Checkout setShowCheckout={setShowCheckout} showCheckout={showCheckout} />
         
           <Switch>

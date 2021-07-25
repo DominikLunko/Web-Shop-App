@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "react";
-import { ADD_TO_CART, CartDispatchTypes, Cart, REMOVE_FROM_CART } from "./cartActionTypes";
+import { ADD_TO_CART, CartDispatchTypes, Cart, REMOVE_FROM_CART, CLOSE_CART, OPEN_CART, RESET_CART } from "./cartActionTypes";
 import * as API from "../../api";
 
 export const addToCart = (id:number, qty:number, singleAdd:boolean) => async (dispatch: Dispatch<CartDispatchTypes>, getState:any) =>{
@@ -24,5 +24,27 @@ export const removeFromCart = (id:number) => (dispatch: Dispatch<CartDispatchTyp
     })
 
     localStorage.setItem('cart', JSON.stringify(getState().cart.products))
+};
+
+export const resetCart = () => (dispatch: Dispatch<CartDispatchTypes>) => {
+    dispatch({
+        type: RESET_CART,
+    })
+
+    localStorage.clear()
+};
+
+export const openCart = () => (dispatch: Dispatch<CartDispatchTypes>) => {
+    dispatch({
+        type: OPEN_CART,
+    })
+
+};
+
+export const closeCart = () => (dispatch: Dispatch<CartDispatchTypes>) => {
+    dispatch({
+        type: CLOSE_CART,
+    })
+
 };
 

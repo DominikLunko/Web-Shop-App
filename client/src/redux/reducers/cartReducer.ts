@@ -1,6 +1,6 @@
 import { Workshop } from "../actions/workshopActionTypes";
 
-import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart, CHANGE_QTY } from "../actions/cartActionTypes";
+import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart, RESET_CART} from "../actions/cartActionTypes";
 
   export interface DefaultStateI {
     products: Cart[];
@@ -13,6 +13,10 @@ import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart, CHANGE_QTY } fr
 export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispatchTypes) => {
     switch(action.type){
 
+        case RESET_CART:
+            return {
+                products:[]
+            }
        
         case ADD_TO_CART:
             const item = {
@@ -46,3 +50,4 @@ export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispa
             return state;
     }
 }
+

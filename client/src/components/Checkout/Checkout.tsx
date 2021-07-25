@@ -12,6 +12,7 @@ import { createOrder } from "../../redux/actions/orderAction";
 import { RootStore } from "../../redux/store";
 
 import "./Checkout.scss";
+import { resetCart } from "../../redux/actions/cartActions";
 
 interface MyProps {
   setShowCheckout: (show: boolean) => void;
@@ -74,7 +75,7 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
   const handleProceedCheckout = (data: FromData) => {
     setShowThankYou(true);
     dispatch(createOrder());
-    console.log(data);
+    dispatch(resetCart())
     reset();
   };
   return (
@@ -113,7 +114,7 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                     {...register("firstName")}
                     className={!errors["firstName"] ? "input" : "input-fail"}
                     name="firstName"
-                    placeholder="First name"
+                    placeholder="Type your first name"
                     type="text"
                   />
                 </div>
@@ -128,7 +129,7 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                     {...register("lastName")}
                     className={!errors["lastName"] ? "input" : "input-fail"}
                     name="lastName"
-                    placeholder="Last name"
+                    placeholder="Type your last name"
                     type="text"
                   />
                 </div>
@@ -143,7 +144,7 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                     {...register("emailAddress")}
                     className={!errors["emailAddress"] ? "input" : "input-fail"}
                     name="emailAddress"
-                    placeholder="Email Address"
+                    placeholder="Type your email Address"
                     type="text"
                   />
                 </div>
@@ -195,7 +196,7 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                     {...register("address")}
                     className={!errors["address"] ? "input" : "input-fail"}
                     name="address"
-                    placeholder="Address"
+                    placeholder="Type your address"
                   />
                 </div>
                 <div className="input-div">

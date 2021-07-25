@@ -10,12 +10,16 @@ import CloseIcon from "@material-ui/icons/Close";
 import CartIconSidebar from "./cartIconSidebar/CartIconSidebar";
 import { RootStore } from "../../redux/store";
 import CartItem from "./CartItem/CartItem";
-import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
+import { addToCart, closeCart, removeFromCart } from "../../redux/actions/cartActions";
 
-const Cart: React.FC<any> = ({ onClick, show, setShowCheckout }) => {
+const Cart: React.FC<any> = ({setShowCheckout }) => {
   const dispatch = useDispatch()
   const cartState = useSelector((state: RootStore) => state.cart);
   const { products} = cartState;
+
+  const { opened } = useSelector(
+    (state: RootStore) => state.openCart
+  );
 
   const qtyChangeHandler = (id:number, qty:number) => {
     dispatch(addToCart(id, qty,true));
@@ -34,10 +38,10 @@ const Cart: React.FC<any> = ({ onClick, show, setShowCheckout }) => {
   };
 
   return (
-      <div className={show ? "sidebar active" : "sidebar"}>
+      <div className={opened ? "sidebar active" : "sidebar"}>
         <div className="title-and-close">
           <CartIconSidebar numOfItems={products.length}/>
-          <CloseIcon className="close-sidebar" style={{ cursor: "pointer" }} onClick={onClick} />
+          <CloseIcon className="close-sidebar" style={{ cursor: "pointer" }} onClick={() =>dispatch(closeCart())} />
         </div>
         <Container className="cart-items-container">
           <Row className="row-cart" xl="1" lg="1" md="1" xs="1">

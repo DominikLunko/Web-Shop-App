@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
+import { useDispatch, useSelector } from "react-redux";
 
 import CartIcon from './cartIcon/CartIcon';
+import { RootStore } from "../../redux/store";
+import { openCart } from "../../redux/actions/cartActions";
 
 
 
-// interface MyProps {
-//   onClick: React.MouseEventHandler<HTMLButtonElement>
-// }
+const Navbar: React.FC<any> = () => {
 
-
-
-const Navbar: React.FC<any> = ({onClick}) => {
+  const dispatch = useDispatch();
+  
 
 
   return (
@@ -26,7 +26,7 @@ const Navbar: React.FC<any> = ({onClick}) => {
           </Link>
       </div>
       <div className="cart_div">
-      <CartIcon onClick={onClick}/>
+      <CartIcon onClick={() => dispatch(openCart())}/>
       </div>
     </div>
     </div>
