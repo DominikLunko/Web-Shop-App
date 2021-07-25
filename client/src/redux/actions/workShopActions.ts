@@ -27,13 +27,13 @@ export const getWorkshops =
       if (category !== "all") {
         const { data } = await API.getCategoryByPage(page, category);
         const allData = await API.getMaxCountOfCategory(category);
-        dispatch({
-          type: GET_WORKSHOP_SUCCESS,
-          payload: {
-            workshops: data,
-            numberOfData: allData.data.length,
-          },
-        });
+          dispatch({
+            type: GET_WORKSHOP_SUCCESS,
+            payload: {
+              workshops: data,
+              numberOfData: allData.data.length,
+            },
+          });
       } else {
         const { data } = await API.getAllCategoryByPage(page);
         const allData = await API.getMaxCountOfAllCategory();

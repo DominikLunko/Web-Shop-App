@@ -1,5 +1,7 @@
-.checkout-wrap{
-  overflow-x: hidden;
+.checkout-wrap {
+  overflow: hidden !important;
+  width: 100%;
+  height: 100%;
 }
 
 .checkout-div {
@@ -9,15 +11,14 @@
   left: 0;
   top: 0;
   z-index: 500;
-  background: #1D1D1B;
+  background: #1d1d1b;
   opacity: 0.75;
-  overflow: scroll;
 }
 
 .form-div-thank-you {
   position: fixed;
   top: 30%;
-  right: 50%;
+  left: 25%;
   background: white !important;
   box-shadow: 5px 10px 5px 5px #888888;
   z-index: 550;
@@ -28,23 +29,165 @@
 .form-div {
   position: fixed;
   top: 5%;
-  right: 65%;
+  left: 30%;
   background: white !important;
   box-shadow: 5px 10px 5px 5px #888888;
   z-index: 550;
   opacity: 1;
-  height: fit-content;
-  width: fit-content;
+
+  @media screen and(max-width:1920px) {
+    top: 5%;
+    left: 30%;
+  }
+  @media screen and(max-width:1300px) {
+    top: 3%;
+    left: 30%;
+  }
+  @media screen and(max-width:1000px) {
+    top: 2%;
+    left: 25%;
+  }
+  @media screen and(max-width:750px) {
+    left: 15%;
+  }
+  @media screen and(max-width:650px) {
+    left: 10%;
+  }
+  @media screen and(max-width:650px) {
+    left: 10%;
+  }
+  @media screen and(max-width:500px) {
+    left: 5%;
+  }
+  @media screen and(max-width:425px) {
+    top: 5%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+  }
   .form {
     border-radius: 20px;
-    margin: 20px;
-    padding: 20px;
-    width: 400px;
+    margin: 10px;
+    padding: 30px;
+    height: 1200px;
+    width: 850px;
     background: white !important;
     position: absolute;
     left: 0;
     display: flex;
     flex-direction: column;
+
+    @media screen and(max-width:1920px) {
+      height: 850px;
+      width: 600px;
+      top: 0;
+    }
+    @media screen and(max-width:1660px) {
+      width: 450px;
+      top: 0;
+    }
+    @media screen and(max-width:650px) {
+      width: 350px;
+      top: 0;
+    }
+
+    @media screen and(max-width:425px) {
+      height: 100%;
+      width: 100%;
+      top: 0;
+      margin: 5px;
+      padding: 20px;
+      border-radius: 20px 20px 0px 0px;
+    }
+
+    .errors-span {
+      color: #ff392e;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    label {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1d1d1b;
+      margin: 20px 0px;
+
+      @media screen and(max-width:1920px) {
+        font-size: 16px;
+        margin: 8px 0px;
+      }
+      @media screen and(max-width:1660px) {
+        font-size: 14px;
+        margin: 6px 0px;
+      }
+    }
+
+    input {
+      font-size: 24px;
+      font-weight: bold;
+      color: #7f7f7f;
+      @media screen and(max-width:1920px) {
+        font-size: 16px !important;
+      }
+      @media screen and(max-width:1660px) {
+        font-size: 14px !important;
+      }
+    }
+
+    .datepicker {
+      font-size: 30px !important;
+      width: 100%;
+      border: 0px;
+      border-bottom: 2px solid #0097cc;
+      @media screen and(max-width:1920px) {
+        font-size: 18px !important;
+      }
+    }
+    .datepicker-fail {
+      font-size: 30px !important;
+      border: 0px;
+      border-bottom: 2px solid #ff392e;
+      @media screen and(max-width:1920px) {
+        font-size: 20px !important;
+      }
+    }
+
+    .title-desc {
+      font-size: 35px !important;
+      color: #7f7f7f;
+      @media screen and(max-width:1920px) {
+        font-size: 25px !important;
+      }
+      @media screen and(max-width:1660px) {
+        font-size: 22px !important;
+      }
+
+      .title-close {
+        display: flex;
+        justify-content: space-between;
+
+        h1 {
+          color: #000000;
+          font-weight: bold;
+          font-size: 60px !important;
+          @media screen and(max-width:1920px) {
+            font-size: 40px !important;
+          }
+          @media screen and(max-width:1660px) {
+            font-size: 35px !important;
+          }
+        }
+
+        .closeIcon {
+          color: #000000;
+          font-size: 50px !important;
+          @media screen and(max-width:1920px) {
+            font-size: 35px !important;
+          }
+        }
+      }
+    }
 
     .input-div {
       margin: 10px 15px;
@@ -53,13 +196,13 @@
         width: 100%;
         margin-top: 1px;
         border: 0px;
-        border-bottom:2px solid blue;
+        border-bottom: 2px solid #0097cc;
       }
       .input-fail {
         width: 100%;
         margin-top: 1px;
         border: 0px;
-        border-bottom:2px solid red;
+        border-bottom: 2px solid #ff392e;
       }
 
       .label {
@@ -74,19 +217,82 @@
       display: flex;
       justify-content: space-between;
       margin: 3px 20px;
+
+      
     }
     .date-gender {
       display: flex;
-      justify-content: space-between;
       margin: 5px 20px;
+      justify-content: space-between;
+      @media screen and(max-width:650px) {
+        flex-direction: column;
+      }
+      .date-gender-inside-div {
+        width: 100%;
+        flex: 0.45;
+        display: flex;
+        flex-direction: column;
+
+        
+        select {
+          border: 0px;
+          border-bottom: 2px solid #0097cc;
+          padding-bottom: 12px;
+          font-size: 26px;
+          @media screen and(max-width:1920px) {
+            font-size: 18px !important;
+            padding-bottom: 5px;
+          }
+          @media screen and(max-width:1660px) {
+            font-size: 16px !important;
+            padding-bottom:7px;
+          }
+        }
+      }
     }
 
     .agree-label {
-      margin: 10px;
-      font-size: 20px;
+      margin: 20px;
+      font-size: 25px;
+      display: flex;
+      align-items: center;
 
+      @media screen and(max-width:1920px) {
+        font-size: 18px !important;
+      }
+      @media screen and(max-width:1660px) {
+        font-size: 16px !important;
+      }
       & input {
+        width: 35px;
+        height: 35px;
         margin-left: 5px;
+        @media screen and(max-width:1920px) {
+          height: 25px;
+          width: 25px;
+        }
+        @media screen and(max-width:1660px) {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+
+    .submit-btn {
+      background: #ffce25;
+      height: 60px;
+      border: 0px;
+      border-radius: 8px;
+      width: 30%;
+      font-size: 25px;
+      font-weight: 600;
+      margin-left: 20px;
+      @media screen and(max-width:1920px) {
+        font-size: 18px !important;
+      }
+      @media screen and(max-width:1660px) {
+        font-size: 17px !important;
+        height: 55px;
       }
     }
   }

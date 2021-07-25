@@ -39,7 +39,7 @@ const WorkShopDetails: React.FC<any> = ({ match, history }) => {
     state.cart?.products.find((item) => item.id === workShopId)
   );
 
-  const [qty, setQty] = useState(/* cartQty ? cartQty?.qty :  */ 1);
+  const [qty, setQty] = useState(1);
 
   const numberOfBuy = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 

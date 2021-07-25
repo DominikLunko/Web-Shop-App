@@ -37,7 +37,7 @@ const Cart: React.FC<any> = ({ onClick, show, setShowCheckout }) => {
       <div className={show ? "sidebar active" : "sidebar"}>
         <div className="title-and-close">
           <CartIconSidebar numOfItems={products.length}/>
-          <CloseIcon style={{ cursor: "pointer" }} onClick={onClick} />
+          <CloseIcon className="close-sidebar" style={{ cursor: "pointer" }} onClick={onClick} />
         </div>
         <Container className="cart-items-container">
           <Row className="row-cart" xl="1" lg="1" md="1" xs="1">
@@ -61,9 +61,9 @@ const Cart: React.FC<any> = ({ onClick, show, setShowCheckout }) => {
         </Container>
         {products.length > 0 &&
         <div className="subtotal-wrap">
-                <p>SUBTOTAL ({getCartCount()}) ITEMS</p>
-                <h2>${getCartSubTotal().toFixed(2)} EUR</h2>
-                <button onClick={() => setShowCheckout(true)}>CHECKOUT</button>
+                <p>SUBTOTAL ({getCartCount()})ITEMS</p>
+                <h2>{getCartSubTotal().toFixed(2)} EUR</h2>
+                <button onClick={() => setShowCheckout(true)}>Checkout</button>
         </div>
         }
       </div>

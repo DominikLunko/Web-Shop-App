@@ -14,6 +14,7 @@ export type Cart = {
     imageUrl: string,
     qty:number
     singleAdd:boolean,
+    
 }
 
 
@@ -29,6 +30,8 @@ export interface RemoveFromCart {
     payload:number
     
 }
+
+
 
 
 

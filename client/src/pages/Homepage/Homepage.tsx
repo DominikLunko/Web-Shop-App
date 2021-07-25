@@ -24,7 +24,7 @@ import WorkshopList from "../../components/workshopList/workshopList";
 import Workshop from "../../components/workshopList/WorkShop/WorkShop";
 import { workshopDetailReset } from "../../redux/actions/workShopDetailsAction";
 
-const Homepage: React.FC<any> = ({ onClick }) => {
+const Homepage: React.FC<any> = () => {
   const dispatch = useDispatch();
 
   const currentWorkshop = useSelector(
@@ -42,12 +42,6 @@ const Homepage: React.FC<any> = ({ onClick }) => {
     "Backend",
     "Marketing",
   ]);
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", () => {
-  //       setW(window.innerWidth);
-  //   });
-  // }, [window.innerWidth]);
 
   useEffect(() => {
     if (currentWorkshop.workshop) {

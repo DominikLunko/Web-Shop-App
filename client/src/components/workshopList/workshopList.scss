@@ -76,6 +76,10 @@
     position: absolute;
     left: 50%;
     margin-top: 40px;
+
+    @media screen and(max-width:500px) {
+      left: 45%;
+    }
   }
 
   .details-error {

@@ -13,7 +13,7 @@ import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart, CHANGE_QTY } fr
 export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispatchTypes) => {
     switch(action.type){
 
-
+       
         case ADD_TO_CART:
             const item = {
                 ...action.payload
@@ -27,19 +27,16 @@ export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispa
                 }
                 return {
                     ...state,
-                    qtyToChange:action.payload.qty,
                     products: state.products.map((x) => x.id === existItem.id ? item : x)
                 }
             } else {
                 return {
                     ...state,
-                    qtyToChange:action.payload.qty,
                     products: [...state.products, item],
                 };
             }
         
         case REMOVE_FROM_CART:
-            console.log("TU")
             return {
                 ...state,
                 products: state.products.filter((x) => x.id !== action.payload)

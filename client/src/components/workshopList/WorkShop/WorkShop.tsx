@@ -116,7 +116,7 @@ const Workshop: React.FC<WorkshopType> = ({
             setPlusOne((prevState) => !prevState);
             setTimeout(()=>{
               setPlusOne((prevState) => !prevState)
-            },1000)
+            },500)
           }}
         >
           Add To Cart

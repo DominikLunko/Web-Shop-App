@@ -4,35 +4,56 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import content from "./formContent";
 import DatePicker from "react-datepicker";
+import CloseIcon from "@material-ui/icons/Close";
 
 import { useSelector, useDispatch } from "react-redux";
 import { createOrder } from "../../redux/actions/orderAction";
 import { RootStore } from "../../redux/store";
 
 import "./Checkout.scss";
-import { Resolver } from "dns";
 
 interface MyProps {
   setShowCheckout: (show: boolean) => void;
   showCheckout: boolean;
 }
 
+interface FromData {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  date: Date;
+  gender: string;
+  address: string;
+  zipCode: number;
+  iAggree: boolean;
+}
+
 const schema = yup.object().shape({
-  firstName: yup.string().required("Please enter your first name").matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed!"),
-  lastName: yup.string().required("Please enter your last name").matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed!"),
+  firstName: yup
+    .string()
+    .required("Please enter your first name")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed!"),
+  lastName: yup
+    .string()
+    .required("Please enter your last name")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed!"),
   emailAddress: yup
     .string()
     .required("Please enter your email")
     .email("Email doesn't contain @"),
   address: yup.string().required("Please enter your Address"),
-  zipCode: yup.string().required("Please enter your Zip Code")
-  .matches(/^[0-9]+$/, "Must be only digits")
-  .min(5, 'Must be exactly 5 digits')
-  .max(5, 'Must be exactly 5 digits'),
+  zipCode: yup
+    .string()
+    .required("Please enter your Zip Code")
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(5, "Must be exactly 5 digits")
+    .max(5, "Must be exactly 5 digits"),
   iAgree: yup.boolean().oneOf([true], "Must Accept Terms and Conditions"),
-  date: yup.date().default(() => new Date()),
+  date: yup
+    .date()
+    .default(() => new Date())
+    .max(new Date(), "Invalid Date"),
 });
 const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
   const dispatch = useDispatch();
@@ -50,11 +71,11 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
     resolver: yupResolver(schema),
   });
 
-  const handleProceedCheckout = () => {
+  const handleProceedCheckout = (data: FromData) => {
     setShowThankYou(true);
     dispatch(createOrder());
+    console.log(data);
     reset();
-    // treba staviti dispatch() reset card jer nakon uspjesne kupnje se mora resetirati Cart
   };
   return (
     <>
@@ -71,47 +92,104 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                 onSubmit={handleSubmit(handleProceedCheckout)}
               >
                 <div className="title-desc">
-                  <h2>CHECKOUT</h2>
-                  <p>desc</p>
+                  <div className="title-close">
+                    <h1>Checkout</h1>
+                    <CloseIcon
+                      className="closeIcon"
+                      onClick={() => setShowCheckout(false)}
+                    />
+                  </div>
+                  <p>Please fill out the form to complete the order!</p>
                 </div>
-                {content.inputs.map((input, key) => {
-                  return (
-                    <div className="input-div" key={key}>
-                      <div className="label">
-                        <label>{input.label}</label>
-                        <span>{errors[input.name]?.message}</span>
-                      </div>
-                      <input
-                        {...register(input.name)}
-                        className={!errors[input.name] ? "input" : "input-fail"}
-                        name={input.name}
-                        placeholder={input.label}
-                        type={input.type}
-                      />
-                    </div>
-                  );
-                })}
-                <label className="date-gender-label">
-                  <span>Date Of Birth</span>
-                  <span>Gender</span>
-                </label>
-                <div className="date-gender">
-                  <DatePicker
-                    {...register("date")}
-                    name="date"
-                    selected={startDate}
-                    onChange={(date: Date) => setStartDate(date)}
+
+                <div className="input-div">
+                  <div className="label">
+                    <label>First name</label>
+                    <span className="errors-span">
+                      {errors["firstName"]?.message}
+                    </span>
+                  </div>
+                  <input
+                    {...register("firstName")}
+                    className={!errors["firstName"] ? "input" : "input-fail"}
+                    name="firstName"
+                    placeholder="First name"
+                    type="text"
                   />
-                  <select>
-                    <option>Other</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
+                </div>
+                <div className="input-div">
+                  <div className="label">
+                    <label>Last name</label>
+                    <span className="errors-span">
+                      {errors["lastName"]?.message}
+                    </span>
+                  </div>
+                  <input
+                    {...register("lastName")}
+                    className={!errors["lastName"] ? "input" : "input-fail"}
+                    name="lastName"
+                    placeholder="Last name"
+                    type="text"
+                  />
+                </div>
+                <div className="input-div">
+                  <div className="label">
+                    <label>Email</label>
+                    <span className="errors-span">
+                      {errors["emailAddress"]?.message}
+                    </span>
+                  </div>
+                  <input
+                    {...register("emailAddress")}
+                    className={!errors["emailAddress"] ? "input" : "input-fail"}
+                    name="emailAddress"
+                    placeholder="Email Address"
+                    type="text"
+                  />
+                </div>
+
+                <div className="date-gender">
+                  <div className="date-gender-inside-div">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <label>Date Of Birth</label>
+                      <span className="errors-span">
+                        {errors["date"]?.message}
+                      </span>
+                    </div>
+                    <DatePicker
+                      className={
+                        !errors["date"] ? "datepicker" : "datepicker-fail"
+                      }
+                      {...register("date")}
+                      name="date"
+                      selected={startDate}
+                      onChange={(date: Date) => setStartDate(date)}
+                    />
+                  </div>
+                  <div className="date-gender-inside-div">
+                    <label>Gender</label>
+                    <select
+                      {...register("gender")}
+                      className={!errors["gender"] ? "input" : "input-fail"}
+                      name="gender"
+                    >
+                      <option>Other</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="input-div">
                   <div className="label">
                     <label>Address</label>
-                    <span>{errors["address"]?.message}</span>
+                    <span className="errors-span">
+                      {errors["address"]?.message}
+                    </span>
                   </div>
                   <input
                     {...register("address")}
@@ -123,7 +201,10 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                 <div className="input-div">
                   <div className="label">
                     <label>ZIP Code</label>
-                    <span>{errors["zipCode"]?.message}</span>
+                    <span className="errors-span">
+                      {" "}
+                      {errors["zipCode"]?.message}
+                    </span>
                   </div>
                   <input
                     {...register("zipCode")}
@@ -133,21 +214,24 @@ const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
                   />
                 </div>
                 <label className="agree-label">
-                  I Agree
                   <input
                     type="checkbox"
                     {...register("iAgree")}
                     name="iAgree"
                   />
+                  &nbsp; I Agree
                 </label>
-                <span>{errors["iAgree"]?.message}</span>
-                <button type="submit">Checkout</button>
+                <span className="errors-span">{errors["iAgree"]?.message}</span>
+                <button type="submit" className="submit-btn">
+                  Checkout
+                </button>
               </form>
             ) : (
               <div>
                 <h2>Thank You</h2>
                 <p>Your order was successfull</p>
                 <button
+                  className="submit-btn"
                   onClick={() => {
                     setShowThankYou(false);
                     setShowCheckout(false);

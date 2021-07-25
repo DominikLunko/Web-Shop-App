@@ -15,7 +15,7 @@ const CartIconSidebar:React.FC<MyProps> = ({numOfItems}) => {
         <div className="cart">
         <div className="cart-icon">
         {numOfItems > 0 &&<Brightness1Icon className="blue-dot-sidebar"/>}
-        <ShoppingCartOutlinedIcon />
+        <ShoppingCartOutlinedIcon className="shopping-icon"/>
         </div>
         <p className="cart-number-sidebar">{numOfItems > 0 ? numOfItems == 1 ? `${numOfItems} Workshop` : `${numOfItems} Workshops ` : "Cart is Empty"}</p>
     </div>

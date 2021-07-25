@@ -28,13 +28,10 @@ const App:React.FC = () => {
         <Navbar onClick={handleShowSidebar}/>
         <Cart  onClick={handleShowSidebar}  show={show} setShowCheckout={setShowCheckout}/>
         <Checkout setShowCheckout={setShowCheckout} showCheckout={showCheckout} />
-        {/* <SideDrawer show={sideToggle} click={() => setSideToggle(false)} /> */}
-        {/* <Backdrop show={sideToggle} click={() => setSideToggle(false)} /> */}
         
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route exact path="/workshop/:id" component={WorkShopDetails} />
-           {/*  <Route exact path="/cart" component={CartScreen} /> */}
           </Switch>
        
     </Router>

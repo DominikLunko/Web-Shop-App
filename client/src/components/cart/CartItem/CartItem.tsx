@@ -25,7 +25,6 @@ interface CartType {
   qty: number;
   qtyChangeHandler:(id:number,qty:number) =>void;
  removeHandler:(id:number) =>void;
- // setScrollToElem:(value:number) =>void,
 }
 
 const CartItem: React.FC<CartType> = ({ imageUrl, title, price, qty, id,qtyChangeHandler, removeHandler }) => {
@@ -39,14 +38,14 @@ const CartItem: React.FC<CartType> = ({ imageUrl, title, price, qty, id,qtyChang
   return (
     <Card className="cart-card">
       <CardImg src={imageUrl} alt="Card image cap" className="cart-img" />
-      <CardBody className="card-body">
+      <CardBody className="card-body-cart">
           <div className="title-bin">
         <CardTitle className="title-card" tag="h5">
           {title}
         </CardTitle>
         <DeleteOutlinedIcon className="bin" onClick={() =>dispatch(removeFromCart(id))}/>
           </div>
-          <div>
+          <div className="select-price">
           <select className="cartitem__select" value={qty} onChange={(e) => qtyChangeHandler(id, JSON.parse(e.target.value))}>
                 {numberOfBuy.map((number) => (
                     <option key={number} value={number}>{number}</option>

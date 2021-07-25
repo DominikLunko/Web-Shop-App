@@ -15,15 +15,25 @@
 
         & .blue-dot-sidebar{
             color:#00AAE4 !important;
-            font-size: 10px;
+            font-size: 15px !important;
             position: absolute;
             top:0;
             right:0%;
 
+            @media screen and(max-width:1920px) {
+                font-size:10px !important ;
+                top:2%;
+             }
+             @media screen and(max-width:1000px) {
+                font-size:9px !important ;
+             }
             @media screen and(max-width:425px) {
                display: none;
             }
         } 
+        .shopping-icon{
+            font-size: 30px !important;
+        }
     }
 
   & .cart-number-sidebar{

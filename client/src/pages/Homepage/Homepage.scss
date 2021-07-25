@@ -26,7 +26,7 @@
       width: 25%;
 
       border-radius: 1px;
-      border:0px;
+      border: 0px;
       border-bottom: 1px solid #00aae4;
       color: #00aae4;
 
@@ -81,6 +81,12 @@
           padding: 5px;
           font-weight: bold;
           font-size: 26px;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            transition: all 0.2s ease-in-out;
+            transform: scale(1.05);
+          }
 
           @media screen and(max-width:1920px) {
             font-size: 24px;
@@ -163,13 +169,13 @@
     margin-bottom: 0px;
 
     @media screen and(max-width:1660px) {
-      font-size:16px      
+      font-size: 16px;
     }
     @media screen and(max-width:1200px) {
-      font-size:14px      
+      font-size: 14px;
     }
     @media screen and(max-width:900px) {
-      font-size:12px      
+      font-size: 12px;
     }
   }
 }

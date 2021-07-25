@@ -15,44 +15,39 @@
 
         
         .shopping-icon {
-            font-size: 50px;
+            font-size: 50px !important;
 
             @media screen and  (max-width:1920px){
-                font-size: 35px;          
-              }
-              @media screen and  (max-width:1660px){
-                font-size: 32px;          
-              }
-              @media screen and  (max-width:1440px){
-                font-size: 30px;          
+                font-size: 34px !important;          
               }
               @media screen and  (max-width:1200px){
-                font-size: 28px;          
+                font-size: 30px !important;          
               }
               @media screen and  (max-width:900px){
-                font-size: 24px;          
+                font-size: 27px !important;          
               }
         }
         & .blue-dot{
             color:#00AAE4 !important;
-            font-size: 20px;
+            font-size: 18px;
             position: absolute;
-            top:0;
+            top:-1%;
             right:2%;
             @media screen and  (max-width:1920px){
-                font-size: 13px;          
+                font-size: 13px !important;          
               }
               @media screen and  (max-width:1660px){
-                font-size: 11px;          
+                font-size: 10px !important;          
               }
               @media screen and  (max-width:1440px){
-                font-size: 10px;          
+                font-size: 9px !important;          
               }
               @media screen and  (max-width:1200px){
-                font-size: 8px;          
+                font-size: 8px;
+                top:3% !important;          
               }
               @media screen and  (max-width:900px){
-                font-size: 7px;          
+                top:8%;           
               }
             // @media screen and(max-width:425px) {
             //     display: none;
