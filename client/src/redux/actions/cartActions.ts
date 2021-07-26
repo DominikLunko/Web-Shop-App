@@ -1,6 +1,5 @@
-import axios from "axios";
 import { Dispatch } from "react";
-import { ADD_TO_CART, CartDispatchTypes, Cart, REMOVE_FROM_CART, CLOSE_CART, OPEN_CART, RESET_CART } from "./cartActionTypes";
+import { ADD_TO_CART, CartDispatchTypes, REMOVE_FROM_CART, CLOSE_CART, OPEN_CART, RESET_CART } from "./cartActionTypes";
 import * as API from "../../api";
 
 export const addToCart = (id:number, qty:number, singleAdd:boolean) => async (dispatch: Dispatch<CartDispatchTypes>, getState:any) =>{

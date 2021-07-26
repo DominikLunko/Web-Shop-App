@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState} from "react";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -59,7 +59,6 @@ const schema = yup.object().shape({
 const Checkout: React.FC<MyProps> = ({ setShowCheckout, showCheckout }) => {
   const dispatch = useDispatch();
 
-  const cartState = useSelector((state: RootStore) => state.cart);
   const [showThankYou, setShowThankYou] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
 

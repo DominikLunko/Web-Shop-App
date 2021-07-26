@@ -1,13 +1,10 @@
-import axios from "axios";
 import { Dispatch } from "redux";
-import { DefaultStateI } from "../reducers/workshopReducers";
 import {
   WorkshopDispatchTypes,
   GET_WORKSHOP_FAIL,
   GET_WORKSHOP_REQUEST,
   GET_WORKSHOP_SUCCESS,
   RESET_WORKSHOP_LIST,
-  PAGE_AND_CATEGORY,
   INCREASE_PAGE_NUMBER,
   CHANGE_CATEGORY,
 } from "./workshopActionTypes";
@@ -18,7 +15,6 @@ export const getWorkshops =
   (page: number, category: string) =>
   async (dispatch: Dispatch<WorkshopDispatchTypes>, getState: any) => {
     try {
-      const backToHome = getState().workshopDetails.backToHomePage;
 
       dispatch({
         type: GET_WORKSHOP_REQUEST,

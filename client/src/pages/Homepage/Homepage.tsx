@@ -33,7 +33,6 @@ const Homepage: React.FC<any> = () => {
   const { page, category, workshops } = useSelector(
     (state: RootStore) => state.workshop
   );
-  const [w, setW] = useState(window.innerWidth);
 
   const [categoryList, setCategoryList] = useState([
     "All",

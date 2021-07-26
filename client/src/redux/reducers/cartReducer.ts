@@ -1,4 +1,3 @@
-import { Workshop } from "../actions/workshopActionTypes";
 
 import { CartDispatchTypes, ADD_TO_CART, REMOVE_FROM_CART, Cart, RESET_CART} from "../actions/cartActionTypes";
 
@@ -26,7 +25,7 @@ export const cartReducer = (state:DefaultStateI = defaultState, action:CartDispa
             const existItem = state.products.find((x) => x.id === item.id);
 
             if(existItem){
-                if(item.singleAdd == false){
+                if(item.singleAdd === false){
                     item.qty = existItem.qty + 1
                 }
                 return {

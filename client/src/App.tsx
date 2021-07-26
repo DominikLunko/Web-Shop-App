@@ -8,7 +8,6 @@ import Navbar from './components/Navbar/Navbar';
 import Homepage from './pages/Homepage/Homepage';
 import WorkShopDetails from './pages/workShopDetails/WorkshopDetails';
 import Checkout from './components/Checkout/Checkout';
-import { truncate } from 'fs';
 
 
 

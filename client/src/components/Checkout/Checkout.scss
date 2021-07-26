@@ -187,10 +187,11 @@
     flex-direction: column;
 
     @media screen and(max-width:1920px) {
-      height: 800px;
+      height: 850px;
       width: 600px;
     }
     @media screen and(max-width:1660px) {
+      height: 800px;
       width: 450px;
     }
     @media screen and(max-width:650px) {

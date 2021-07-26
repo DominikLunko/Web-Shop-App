@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import CartIcon from './cartIcon/CartIcon';
 import { RootStore } from "../../redux/store";

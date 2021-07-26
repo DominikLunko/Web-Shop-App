@@ -1,8 +1,6 @@
-import axios from "axios";
 import { Dispatch } from "react";
 import { Cart } from "./cartActionTypes";
 import {
-  CREATE_ORDER,
   Order,
   OrderDispatchTypes,
   Product,
@@ -17,6 +15,7 @@ export const createOrder =
     products.map((product: Cart) => {
       const { singleAdd, ...copy } = product;
       copy_product.push(copy);
+      return copy_product
     });
     const total = products.reduce(
       (price: number, item: Product) => item.price * item.qty + price,
